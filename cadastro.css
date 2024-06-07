@@ -1,0 +1,78 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.Container {
+    width: 30vw;
+    height: calc(90vh - 10vh);
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    position: relative;
+    left: 35vw;
+    top: 10vh;
+    align-items: center;
+    background-color: #1c1c1c;
+}
+
+.form {
+    
+    height: 70%;
+    width: 50%;
+    padding: 10px;
+    color: white;
+   
+}
+
+#Email {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#Confirme {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#senha {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#Confirme-password {
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+h2 {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    bottom: 40px;
+}
+
+#button {
+    height: 30px;
+    width: 250px;
+    border-radius: 30px;
+    position: relative;
+    right: 1vw;
+    background-color: #38761d;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    border: 1px solid black;
+}
+
+img {
+    position: relative;
+    bottom: 60px;
+    left: 40px;
+    width: 10vw;
+}
