@@ -1,0 +1,147 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+    .header {
+    width: 100vw;
+    height: 10vh;
+    background-color: #1c1c1c;
+    display: flex;
+    justify-items: left;
+    position: relative;
+    left: 0px;
+}
+
+.banner {
+    width: 200px;
+    height: 80px;
+    position: relative;
+    left: 45px;
+    top: 7px;
+}
+
+.ban {
+    width: 200px;
+    height: 80px;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+.esquerdo {
+    height: calc(90vh - 10vh);
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #434343;
+    align-items: center;
+}
+
+.direito {
+    float: left;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    bottom:80vh;
+    left: 25vw;
+    width: 75vw;
+    height: 766px;
+    background-image: url(./Assents/Background-Homepage.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.simbolo {
+        position: relative;
+        top: 15vh;
+}
+
+.button {
+        position: relative;
+        top: 25vh;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+}
+
+#logar{
+    background-color: #38721f;
+    color: white;
+    margin-bottom: 20px;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 20px;
+}
+
+#logar:hover {
+    opacity: 0.5;
+}
+
+#Sobre {
+    background-color: #38721f;
+    color: white;
+    height: 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    width: 150px;
+    position: relative;
+    left: 25px;
+
+}
+#Sobre:hover {
+    opacity: 0.5;
+}
+
+#sim {
+    height: 200px;
+    width: 200px;
+}
+
+.text {
+    width: 20vw;
+    display: flex;
+    background-color: #1c1c1c;
+    height: 400px;
+    position: relative;
+    left: 30px;
+    top: 40px;
+    flex-direction: column;
+    color: white;
+    border-radius: 20px;
+    padding: 7px;
+    border: 5px solid #38721f;
+    filter: brightness(none)
+}
+.rodape {
+    width: 100vw;
+    height: 10vh;
+    background-color: #1c1c1c;
+}
+
+#h1NS {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.TextoNS{
+    font-size: 20px;
+    padding-right: 2%;
+}
+.imagemNS{
+    width: 650px;
+    height:400px;
+    padding-left: 4%;
+    padding-right: 3%;
+}
+.divNS {
+    display: flex;
+}
+.pNS {
+    padding-bottom: 2%;
+}
