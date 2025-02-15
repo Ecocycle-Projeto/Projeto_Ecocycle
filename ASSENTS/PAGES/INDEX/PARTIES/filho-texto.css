@@ -1,0 +1,25 @@
+@import '../../../CSS/GLOBAL/Variables.CSS';
+
+#filho-texto {
+    background-color: white;
+    margin-bottom: 60px;
+    height: 154px;
+    width: 362px;
+    position: relative;
+    top: 40px;
+}
+
+#filho-texto > h1 {
+    color: var(--Cor-verde-escuro) ;
+    margin-bottom: 5px;
+}
+
+#filho-texto >button {
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 3px solid var(--Cor-verde);
+    font-size: 15px;
+    margin-top: 5px;
+    font-weight: bolder;
+}

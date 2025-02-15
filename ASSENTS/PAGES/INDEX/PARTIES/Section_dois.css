@@ -1,0 +1,31 @@
+.section-dois {
+    background-color: #ffffff30;
+    backdrop-filter: blur(3px);
+    display: flexbox;
+    width:700px;
+    height: 300px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 100px;
+    left: 150px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.h1 {
+    color: green;
+    font-size: 30px;
+}
+
+.titulo2 {
+    margin-bottom: 20px;
+}
+
+.paragrafo {
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+}
+
+

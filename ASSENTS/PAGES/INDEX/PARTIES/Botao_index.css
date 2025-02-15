@@ -1,0 +1,19 @@
+@import './../../../CSS/GLOBAL/Variables.CSS';
+
+
+.botao-primario {
+    display: flex;
+    position: relative;
+    top: 120px;
+    left: 200px;
+    height: 50px;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ba84a ;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: 0px;
+    
+}

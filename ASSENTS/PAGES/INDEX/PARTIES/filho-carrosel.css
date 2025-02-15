@@ -1,0 +1,19 @@
+@import '../../../CSS/GLOBAL/Variables.CSS';
+
+.filho-carrosel {
+    height: 320px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.filho-carrosel > h3 {
+    color: var(--Cor-verde);
+    margin-bottom: 10px;
+}
+
+.filho-carrosel > h2 {
+    display: flex;
+    justify-content: center;
+}
