@@ -1,6 +1,7 @@
 @import '../../../CSS/GLOBAL/Variables.CSS';
 
-header {
+
+.header-ecomap{
     display: flex;
     background-color: var(--Cor-fundo);
     width: 70vw;
@@ -9,5 +10,4 @@ header {
     justify-self: center;
     margin-bottom: 10px ;
     border-bottom: 5px solid var(--Cor-verde);
-    
 }

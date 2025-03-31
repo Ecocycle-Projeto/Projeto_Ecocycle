@@ -1,0 +1,14 @@
+@import '../../../CSS/GLOBAL/Variables.CSS';
+
+.mapa {
+    display: flex;
+    background-color: #3B4444;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    height: 500px;
+    position: relative;
+    top: 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+}

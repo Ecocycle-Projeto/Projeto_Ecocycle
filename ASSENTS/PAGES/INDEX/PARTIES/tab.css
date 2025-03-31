@@ -14,5 +14,36 @@
     position: relative;
     top: 37vh;
     z-index: 2;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: click-animation;
+    animation-play-state: paused;
 
 }
+
+.tab:hover {
+    cursor: pointer;
+}
+
+.tab > span {
+  cursor: pointer;
+}
+
+.tab:active {
+    animation-play-state: running;
+
+}
+
+@keyframes click-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

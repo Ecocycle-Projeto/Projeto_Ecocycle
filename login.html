@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./ASSENTS/PAGES/LOGIN/login.css">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="website icon" href="./ASSENTS/IMAGENS/icons8-reciclagem-50 1.png">
+    <script src="./ASSENTS/SCRIPTS/REGISTRO/login.js"></script>
+    <script src="./ASSENTS/SCRIPTS/REGISTRO/Auth.js"></script>
 </head>
 <body>
     <form class="formulario-login" action="">
@@ -12,16 +15,10 @@
         <h1 class="texto-formulario">Eco Cycle</h1>
         <p class="texto-formulario">Faça login e comece a usar!</p>
         <label class="texto-formulario" for="email">Endereço de Email
-            <span id="i-email">
-                <img  src="./ASSENTS/IMAGENS/o-email 1.png" alt="">
-            </span>
-            <input class="input-formulario" placeholder="joãopaulo55@gmail.com" type="email">
+            <input id="login-email" class="input-formulario" placeholder="joãopaulo55@gmail.com" type="email">
         </label>
         <label class="texto-formulario" for="password">Sua senha
-            <span id="i-senha">
-                <img src="./ASSENTS/IMAGENS/cadeado 1.png" alt="">
-            </span>
-             <input class="input-formulario" placeholder="*************" type="password">
+             <input id="login-password" class="input-formulario" placeholder="*************" type="password">
         </label>
         <label class="checkbox-formulario" for="check">
             <input class="input-formulario"  type="checkbox">
@@ -29,7 +26,7 @@
         </label> 
         <button class="botao-login"> Entrar na plataforma</button>
         <a class="link-formulario" href="">Esqueceu sua senha ?</a>
-        <a class="link-formulario" href="">Não tem conta ? se registre agora!</a>
+        <a class="link-formulario" href="./cadastro.html">Não tem conta ? se registre agora!</a>
     </form>
 </body>
 </html>

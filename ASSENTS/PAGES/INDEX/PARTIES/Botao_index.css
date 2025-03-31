@@ -15,5 +15,32 @@
     font-weight: bolder;
     font-size: 20px;
     margin-bottom: 0px;
-    
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: click-animation;
+    animation-play-state: paused;
 }
+
+.botao-primario:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+.botao-primario:active {
+    animation-play-state: running;
+}
+
+@keyframes click-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+

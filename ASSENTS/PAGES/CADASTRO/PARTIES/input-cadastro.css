@@ -1,6 +1,6 @@
 @import '../../../CSS/GLOBAL/Variables.CSS';
 
-.input-formulario {
+.input-cadastro {
     background-color: var(--Cor-cinza);
     border-radius: 5px;
     outline: none;    
@@ -9,7 +9,6 @@
     padding: 16px;
     font-size: 16px;
     margin-top: 5px;
+    margin-bottom: 20px;
     
 }
-
-

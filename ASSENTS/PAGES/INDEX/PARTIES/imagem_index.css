@@ -1,9 +1,9 @@
 .imagem-fundo {
     display: block;
     width: 100%; /* Ocupa toda a largura do contêiner */
-    height: auto; /* Altura automática para manter a proporção */
+    height: 100%; /* Altura automática para manter a proporção */
     max-height: 100vh; /* Altura máxima da imagem igual à altura da tela */
-    clip-path: polygon(100% 99%, 100% 0, 90% 5.5%, 35% 35%, 60% 65%, 53% 100%);
+    clip-path: polygon(100% 100%, 100% 0, 90% 5.5%, 35% 35%, 60% 65%, 53% 100%);
     margin: 0; /* Remove margens */
     padding: 0; /* Remove padding */
     position: absolute; /* Posiciona a imagem absolutamente */

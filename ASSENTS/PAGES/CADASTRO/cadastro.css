@@ -1,0 +1,11 @@
+@import '../CADASTRO/PARTIES/botao-cadastro.css';
+@import '../CADASTRO/PARTIES/formulario-cadastro.css';
+@import '../CADASTRO/PARTIES/img-cadastro.css';
+@import '../CADASTRO/PARTIES/input-cadastro.css';
+@import '../../CSS/GLOBAL/Normalizer.css';
+@import '../../CSS/GLOBAL/Global.css';
+
+
+html {
+    background-color: var(--Cor-fundo);
+}

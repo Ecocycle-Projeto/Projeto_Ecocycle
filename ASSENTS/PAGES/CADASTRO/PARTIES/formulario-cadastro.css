@@ -1,0 +1,31 @@
+.formulario-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 35vw;
+    height: 80vh;
+    position: relative;
+    top: 100px;
+    background-color: var(--Cor-fundo);
+    
+}
+
+.formulario-cadastro > h1 {
+    color: white;
+    position: relative;
+    display: flex;
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.formulario-cadastro > p {
+    color: white;
+    position: relative;
+    display: flex;
+    align-self: center;
+    margin-bottom: 25px;
+}
+
+.formulario-cadastro > label {
+    color: white;
+}
