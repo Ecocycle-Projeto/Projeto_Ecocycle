@@ -1,0 +1,13 @@
+@import '../../../css/global/variables.css';
+
+header {
+    display: flex;
+    background-color: var(--Cor-fundo);
+    width: 70vw;
+    height: 10vh;
+    position: relative;
+    justify-self: center;
+    margin-bottom: 10px ;
+    border-bottom: 5px solid var(--Cor-verde);
+    
+}

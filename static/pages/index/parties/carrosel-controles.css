@@ -1,0 +1,16 @@
+.carrosel-controles {
+    position: absolute;
+    top: 65%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carrosel-controles span {
+    cursor: pointer;
+    font-size: 3em;
+    color: white;
+    user-select: none;
+    padding: 10px;
+}

@@ -1,0 +1,6 @@
+.banner {
+    display: flex;
+    position: relative;
+    top: 15px;
+    height: 40px;
+}

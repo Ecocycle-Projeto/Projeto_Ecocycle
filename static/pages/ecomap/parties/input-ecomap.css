@@ -1,0 +1,13 @@
+.input-ecomap {
+    display: flex;
+    height: 35px;
+    background-color: #2D3A3A;
+    width: 420px;
+    position: relative;
+    left: 450px;
+    top: 10px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+
+}

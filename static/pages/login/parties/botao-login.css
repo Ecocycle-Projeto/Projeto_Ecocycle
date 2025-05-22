@@ -1,0 +1,14 @@
+.botao-login {
+    display: flex;
+    position: relative;
+    height: 50px;
+    width: 100%;    
+    align-items: center;
+    justify-content: center;
+    background-color: #2ba84a ;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: 0px;
+    border-radius: 5px;   
+}

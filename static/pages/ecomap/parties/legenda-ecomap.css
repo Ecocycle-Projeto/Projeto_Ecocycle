@@ -1,0 +1,29 @@
+.legenda-ecomap {
+    display: flex;
+    position: relative;
+    align-self: last baseline;
+    height: 30px;
+    width: 240px;
+    background-color: #2D3A3A;
+    backdrop-filter: blur(10px);
+    left: 550px;
+    bottom: 20px;
+    backdrop-filter: fill(100%);
+    color: white;
+    flex-direction: row;
+    border-radius: 20px;
+
+}
+
+.legenda-ecomap > p > span > img {
+    position: relative;
+    top: 13px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.legenda-ecomap > p {
+    position: relative;
+    bottom: 17px;
+    left: 14px;
+}

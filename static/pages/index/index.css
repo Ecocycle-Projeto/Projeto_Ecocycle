@@ -1,0 +1,26 @@
+@import './parties/header.css';
+@import './parties/section-um.css';
+@import './parties/imagem-icone-Ecocycle.css';
+@import './parties/imagem-index.css';
+@import './parties/section-dois.css';
+@import './parties/botao-index.css';
+@import './parties/tab.css';
+@import './parties/section-tres.css';
+@import './parties/filho-section-tres.css';
+@import './parties/filho-texto.css';
+@import './parties/img-carrosel.css';
+@import './parties/filho-carrosel.css';
+@import './parties/titulo-section-tres.css';
+@import './parties/carrosel-controles.css';
+@import '../../css/global/global.css';
+
+
+html {
+    background-color: var(--Cor-fundo);
+    max-width: 100%;
+    height: 100%;
+}
+
+
+
+

@@ -1,0 +1,51 @@
+@import '../../../css/global/variables.css';
+
+#filho-texto {
+    background-color: white;
+    margin-bottom: 60px;
+    height: 154px;
+    width: 362px;
+    position: relative;
+    top: 40px;
+}
+
+#filho-texto > h1 {
+    color: var(--Cor-verde-escuro) ;
+    margin-bottom: 5px;
+}
+
+#filho-texto >button {
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 3px solid var(--Cor-verde);
+    font-size: 15px;
+    margin-top: 5px;
+    font-weight: bolder;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: click-animation;
+    animation-play-state: paused;
+}
+
+#filho-texto > button:active {
+    animation-play-state: running;
+}
+
+#filho-texto > button:hover {
+    opacity: 70%;
+}
+
+@keyframes click-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

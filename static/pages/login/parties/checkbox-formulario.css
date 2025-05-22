@@ -1,0 +1,14 @@
+.checkbox-formulario {
+    display: flex;
+    color: white;
+}
+
+.checkbox-formulario input {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: var(--Cor-cinza);
+    align-self: left;
+
+}

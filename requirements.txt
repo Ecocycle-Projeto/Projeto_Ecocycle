@@ -1,0 +1,16 @@
+# CORE FLASK (testado em julho/2024)
+Flask==2.3.3            # Versão LTS (Long Term Support) mais estável
+Werkzeug==2.3.7         # Compatível com Flask 2.3.x
+Jinja2==3.1.2           # Sistema de templates
+itsdangerous==2.1.2     # Segurança
+click==8.1.7            # Linha de comando
+
+# BANCO DE DADOS
+Flask-SQLAlchemy==3.0.5 # ORM para Flask
+psycopg2-binary==2.9.9  # Driver PostgreSQL
+SQLAlchemy==2.0.23      # Versão compatível
+
+# EXTENSÕES ÚTEIS
+python-dotenv==1.0.0    # Variáveis de ambiente
+Flask-Migrate==4.0.4    # Migrações de banco
+Flask-WTF==1.2.1        # Formulários
