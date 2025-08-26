@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import psycopg2
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 
 db_connection = psycopg2.connect(
     host="localhost",
@@ -12,6 +13,7 @@ db_connection = psycopg2.connect(
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
+CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://127.0.0.1:5000"}})
 
 @app.route('/')
 def index():
@@ -29,18 +31,36 @@ def cadastro():
 def ecomap():
     return render_template("Ecomap.html")
 
+@app.route('/auth/login', methods=['POST'])
+def autenticar():
+    try:
+        email = request.json.get('email')
+        senha = request.json.get('senha')
+
+        cursor = db_connection.cursor()
+        cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
+        usuario = cursor.fetchone()
+
+        if usuario and check_password_hash(usuario[3], senha):
+            return jsonify(mensagem="Login realizado com sucesso")
+        else:
+            return jsonify(mensagem="Email ou senha inválidos"), 401
+
+    except Exception as e:
+        db_connection.rollback()
+        return jsonify(erro="Erro interno no servidor", detalhe=str(e)), 500
+
 @app.route('/usuario', methods=['GET'])
 def get_usuários():
     cursor = db_connection.cursor()
-    cursor.execute("SELECT * FROM usuarios")
+    cursor.execute("SELECT id, nome, email FROM usuarios")
     usuarios = cursor.fetchall()
     
     usuario = list()
     for u in usuarios:
         usuario.append({
             'id': u[0],            'nome': u[1],
-            'email': u[2],
-            'senha': u[3]
+            'email': u[2]
         })
         
     cursor.close()
@@ -78,8 +98,10 @@ def criar_usuario():
         cursor = db_connection.cursor()
         data = request.get_json()
 
+        senha_hash = generate_password_hash(data['senha'], method='pbkdf2:sha256')
+
         sql = "INSERT INTO usuarios (nome, email, senha) VALUES (%s, %s, %s)"
-        cursor.execute(sql, (data['nome'], data['email'], data['senha']))
+        cursor.execute(sql, (data['nome'], data['email'], senha_hash))
         
         db_connection.commit()
 
@@ -95,9 +117,10 @@ def atualizar_usuario(id):
     try:
         cursor = db_connection.cursor()
         data = request.get_json()
-
+        
+        senha_hash = generate_password_hash(data['senha'], method='pbkdf2:sha256')
         sql = "UPDATE usuarios SET nome = %s, email = %s, senha = %s WHERE id = %s"
-        cursor.execute(sql, (data['nome'], data['email'], data['senha'], id))
+        cursor.execute(sql, (data['nome'], data['email'], senha_hash, id))
         
         db_connection.commit()
 
@@ -117,7 +140,8 @@ def deletar_usuario(id):
         cursor.execute(sql, (id,))
         
         db_connection.commit()
-
+        if cursor.rowcount == 0:
+            return jsonify(mensagem="Usuário nao encontrado"), 404
         return jsonify(mensagem="Usuário deletado com sucesso"), 200
     except Exception as e:
         return jsonify(erro=str(e)), 500

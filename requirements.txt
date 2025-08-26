@@ -14,3 +14,6 @@ SQLAlchemy==2.0.23      # Versão compatível
 python-dotenv==1.0.0    # Variáveis de ambiente
 Flask-Migrate==4.0.4    # Migrações de banco
 Flask-WTF==1.2.1        # Formulários
+pytest
+pytest-flask
+Werkzeug

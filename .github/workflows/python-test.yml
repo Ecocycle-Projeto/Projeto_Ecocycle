@@ -1,0 +1,47 @@
+# Nome do seu fluxo de trabalho, que aparecerá no GitHub
+name: Python Tests
+
+# Eventos que irão disparar este fluxo de trabalho
+on:
+  push:
+    branches:
+      - dev  # ou 'master', dependendo do nome da sua branch principal
+  pull_request:
+    branches:
+      - dev # ou 'master'
+
+# As 'jobs' são tarefas independentes que rodam no fluxo de trabalho
+jobs:
+  build:
+    # O ambiente onde a 'job' vai rodar. Escolha a versão mais recente do Ubuntu
+    runs-on: ubuntu-latest
+
+    # Estratégia de matriz para testar em múltiplas versões do Python
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    # Os 'steps' são as ações sequenciais dentro de uma 'job'
+    steps:
+      # Step 1: Realiza o checkout do seu código do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configura a versão do Python que você definiu na matriz
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      # Step 3: Instala as dependências do seu projeto
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest  
+
+      # Step 4: Roda os testes
+      - name: Run tests
+        run: |
+          pytest
