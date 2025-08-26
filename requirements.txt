@@ -16,4 +16,4 @@ Flask-Migrate==4.0.4    # Migrações de banco
 Flask-WTF==1.2.1        # Formulários
 pytest
 pytest-flask
-Werkzeug
+Flask-Cors
