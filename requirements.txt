@@ -17,3 +17,4 @@ Flask-WTF==1.2.1        # Formulários
 pytest
 pytest-flask
 Flask-Cors
+python-dotenv==1.0.0

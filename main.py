@@ -2,9 +2,6 @@ from flask import Flask, render_template, jsonify, request
 import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
-import os
-
-db_url = os.environ.get("DATABASE_URL", "postgresql://user:password@localhost:5432/ecocycle_db")
 
 
 db_connection = psycopg2.connect(
@@ -107,7 +104,7 @@ def criar_usuario():
         sql = "INSERT INTO usuarios (nome, email, senha) VALUES (%s, %s, %s)"
         cursor.execute(sql, (data['nome'], data['email'], senha_hash))
         
-        # db_connection.commit()
+        db_connection.commit()
 
         return jsonify(mensagem="Usuário criado com sucesso"), 201
     except Exception as e:
