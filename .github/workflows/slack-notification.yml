@@ -1,0 +1,64 @@
+# Nome do fluxo de trabalho
+name: Notificação Slack
+
+# Quando o fluxo de trabalho será disparado
+on:
+  push:
+    branches:
+      - API # Dispara quando houver um push para a branch 'api'
+      - main # Opcional, se quiser notificar pushes para a main também
+
+jobs:
+  build_and_notify:
+    # Rodar no ambiente Ubuntu mais recente
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Baixa o código do seu repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+      
+      # Instala as dependências do projeto
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest-flask
+          pip install python-dotenv
+      
+      # Executa os testes do projeto
+      - name: Executar testes
+        id: run_tests
+        run: pytest
+        
+      # Envia uma notificação para o Slack se a build for bem-sucedida
+      - name: Notificar Sucesso no Slack
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: |
+            ✅ *SUCESSO:* A build da branch `${{ github.ref_name }}` foi concluída com sucesso!
+            Autor: ${{ github.actor }}
+            Mensagem: `${{ github.event.head_commit.message }}`
+            URL da Ação: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SLACK_CHANNEL: 'geral' # Substitua pelo nome do seu canal, como 'geral'
+          SLACK_COLOR: 'good'
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_TITLE: 'Projeto EcoCycle'
+      
+      # Envia uma notificação para o Slack se a build falhar
+      - name: Notificar Falha no Slack
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: |
+            ❌ *FALHA:* A build da branch `${{ github.ref_name }}` falhou.
+            Autor: ${{ github.actor }}
+            Mensagem: `${{ github.event.head_commit.message }}`
+            URL da Ação: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SLACK_CHANNEL: 'geral' # Substitua pelo nome do seu canal, como 'geral'
+          SLACK_COLOR: 'danger'
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_TITLE: 'Projeto EcoCycle'
