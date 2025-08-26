@@ -6,20 +6,14 @@ import os
 
 db_url = os.environ.get("DATABASE_URL", "postgresql://user:password@localhost:5432/ecocycle_db")
 
-try:
-    db_connection = psycopg2.connect(db_url)
-except Exception as e:
-    print(f"Erro ao conectar ao banco de dados: {e}")
-    db_connection = None
 
-
-# db_connection = psycopg2.connect(
-#     host="localhost",
-#     database="postgres",
-#     user="postgres",
-#     password="12345678",
-#     port="5432"
-# )
+db_connection = psycopg2.connect(
+    host="localhost",
+    database="postgres",
+    user="postgres",
+    password="12345678",
+    port="5432"
+)
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
