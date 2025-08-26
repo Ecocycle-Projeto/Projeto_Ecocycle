@@ -4,7 +4,7 @@ name: Testes de API Python
 on:
   push:
     branches:
-      - api
+      - API
   pull_request:
     branches:
       - main
