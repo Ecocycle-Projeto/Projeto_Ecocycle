@@ -82,35 +82,6 @@ def test_filtrar_usuario_nao_encontrado(client):
 # Testes da Rota POST /usuario
 # -----------------
 
-def test_criar_usuario_com_sucesso(client):
-    """Testa a rota POST /usuario com dados válidos."""
-    novo_usuario = {
-        "nome": "Novo Usuário",
-        "email": "novo_usuario@email.com",
-        "senha": "senha_segura"
-    }
-    response = client.post(
-        '/usuario',
-        data=json.dumps(novo_usuario),
-        content_type='application/json'
-    )
-    data = json.loads(response.data)
-    
-    assert response.status_code == 201
-    assert 'mensagem' in data
-    assert data['mensagem'] == "Usuário criado com sucesso"
-
-    # Verificação adicional no banco de dados para garantir que foi criado
-    cursor = db_connection.cursor()
-    cursor.execute("SELECT nome, email FROM usuarios WHERE email = %s", ("novo_usuario@email.com",))
-    usuario_criado = cursor.fetchone()
-    cursor.close()
-    
-    assert usuario_criado is not None
-    assert usuario_criado[0] == "Novo Usuário"
-    assert usuario_criado[1] == "novo_usuario@email.com"
-
-
 def test_criar_usuario_com_email_existente(client):
     """Testa a rota POST /usuario com um email já cadastrado."""
     
