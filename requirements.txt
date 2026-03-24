@@ -14,7 +14,7 @@ SQLAlchemy==2.0.23      # Versão compatível
 python-dotenv==1.0.0    # Variáveis de ambiente
 Flask-Migrate==4.0.4    # Migrações de banco
 Flask-WTF==1.2.1        # Formulários
-pytest
-pytest-flask
-Flask-Cors
-python-dotenv==1.0.0
+pytest==7.4.0           # Testes
+pytest-flask==1.2.0     # Testes específicos para Flask
+Flask-Cors==3.0.10      # Habilitar CORS 
+Flask-JWT-Extended==4.7.1   # Autenticação JWT

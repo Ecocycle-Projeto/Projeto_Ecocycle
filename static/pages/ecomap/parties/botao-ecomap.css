@@ -1,7 +1,7 @@
 .botao-ecomap {
-    height: 40px;
-    width: 50px;
-    border-radius: 200%;
+    height: 50px;
+    width: 38px;
+    border-bottom: #000 solid 2px;
     font-size: 30px;
     background-color: #2BA84A;
     color: #fff;
@@ -9,7 +9,36 @@
     justify-items: center;
     justify-content: center;
     position: relative;
-    top: 20px;
+
+}
+
+#top {
+    border-top-left-radius: 20px;
+}
+
+#bottom {
+    border-bottom-left-radius: 20px;
+}
+
+.botao-ecomap-legenda {
+    height: 50px;
+    width: 38px;
+    border-bottom: #000 solid 2px;
+    font-size: 30px;
+    background-color: #2BA84A;
+    color: #fff;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    position: relative;
+    top: 300px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.botao-ecomap-legenda:hover {
+    opacity: 60%;
 }
 
 .botao-ecomap:hover {

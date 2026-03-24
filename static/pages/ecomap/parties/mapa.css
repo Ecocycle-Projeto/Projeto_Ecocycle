@@ -3,12 +3,12 @@
 .mapa {
     display: flex;
     background-color: #3B4444;
-    width: 90%;
+    width:80%;
     align-self: center;
     justify-self: center;
     height: 500px;
     position: relative;
-    top: 10px;
+    top: 40px;
     border-radius: 20px;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);   
 }

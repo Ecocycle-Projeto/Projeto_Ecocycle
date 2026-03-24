@@ -6,6 +6,10 @@ on:
       - API 
       - main 
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build_and_notify:
 

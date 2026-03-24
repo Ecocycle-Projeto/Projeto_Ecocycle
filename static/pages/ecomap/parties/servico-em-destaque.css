@@ -1,0 +1,11 @@
+.servico-em-destaque {
+    display: flex;
+    flex-direction: column;
+    /* background-color: #2D3A3A; */
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    top: 100px;
+    align-self: left;
+    justify-items: space-between;
+}

@@ -1,0 +1,9 @@
+@import "../../css/global/global.css";
+@import "./parties/header-ecomap.css";
+@import "./parties/menu-ecomap.css";
+
+
+
+body {
+    background-color: var(--Cor-fundo);
+}

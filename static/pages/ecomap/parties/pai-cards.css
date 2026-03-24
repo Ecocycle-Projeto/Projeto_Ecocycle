@@ -1,0 +1,23 @@
+.pai-cards{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-self: left;
+    left: 30px;
+    width: 450px;
+  
+}
+
+.pai-cards > h1 {
+    color: #000;
+    display: flex;
+    position: relative;
+    left: 100px;
+    width: 400px;
+    font-size: 40px;
+    border-radius: 15px;
+    background-color: #2ba84a;
+    padding-left: 15px;
+    left: 50px;
+    font-weight: normal;
+}

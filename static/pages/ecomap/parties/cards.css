@@ -1,0 +1,28 @@
+.caixa-cards {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: 450px;
+    top: 30px;
+    justify-content: space-evenly;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: #2D3A3A;
+    height: 400px;
+    width: 380px;
+    position: relative;
+
+}
+
+.card:hover {
+    cursor: pointer;
+    height: 420px;
+    width: 400px;
+}
