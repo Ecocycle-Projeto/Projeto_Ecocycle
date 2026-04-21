@@ -1,0 +1,30 @@
+.botoes-formulario {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20px;
+    height: 200px;
+    gap: 10px;
+
+}
+
+
+.botao {
+    display: flex;
+    position: relative;
+    height: 30px;
+    width: 250px;    
+    align-items: center;
+    justify-content: center;
+    background-color: #2ba84a ;
+    letter-spacing: 1px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+
+#alterar {
+    width: 150px;
+}

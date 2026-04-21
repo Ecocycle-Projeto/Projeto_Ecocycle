@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const nome = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const senha = document.getElementById('password').value;
+        const recaptchaToken = grecaptcha.getResponse();
+        
         
         // Validações
         if (!nome || !email || !senha) {
@@ -15,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        if (!recaptchaToken) {
+            alert('Por favor, prove que você não é um robô (marque o reCAPTCHA).');
+            return;
+        }
+
         if (senha.length < 6) {
             alert('A senha deve ter pelo menos 6 caracteres');
             return;
@@ -39,9 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({
                     nome: nome,
                     email: email,
-                    senha: senha
+                    senha: senha,
+                    'g-recaptcha-response': recaptchaToken
                 })
             });
+
+             if (!response.ok) {
+                // Se o reCAPTCHA falhar no back-end, o Google invalida o token.
+                grecaptcha.reset(); 
+                throw new Error(data.mensagem || 'Erro no login');
+            }
 
             const resultado = await response.json();
 

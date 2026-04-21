@@ -1,20 +1,33 @@
-# CORE FLASK (testado em julho/2024)
-Flask==2.3.3            # Versão LTS (Long Term Support) mais estável
-Werkzeug==2.3.7         # Compatível com Flask 2.3.x
-Jinja2==3.1.2           # Sistema de templates
-itsdangerous==2.1.2     # Segurança
-click==8.1.7            # Linha de comando
-
-# BANCO DE DADOS
-Flask-SQLAlchemy==3.0.5 # ORM para Flask
-psycopg2-binary==2.9.9  # Driver PostgreSQL
-SQLAlchemy==2.0.23      # Versão compatível
-
-# EXTENSÕES ÚTEIS
-python-dotenv==1.0.0    # Variáveis de ambiente
-Flask-Migrate==4.0.4    # Migrações de banco
-Flask-WTF==1.2.1        # Formulários
-pytest==7.4.0           # Testes
-pytest-flask==1.2.0     # Testes específicos para Flask
-Flask-Cors==3.0.10      # Habilitar CORS 
-Flask-JWT-Extended==4.7.1   # Autenticação JWT
+alembic==1.16.5
+blinker==1.9.0
+certifi==2026.2.25
+charset-normalizer==3.4.7
+click==8.1.7
+colorama==0.4.6
+Flask==2.3.3
+flask-cors==6.0.1
+Flask-JWT-Extended==4.7.1
+Flask-Migrate==4.0.4
+Flask-SQLAlchemy==3.0.5
+Flask-WTF==1.2.1
+greenlet==3.2.4
+idna==3.11
+iniconfig==2.1.0
+itsdangerous==2.1.2
+Jinja2==3.1.2
+Mako==1.3.10
+MarkupSafe==3.0.2
+packaging==25.0
+pluggy==1.6.0
+psycopg2-binary==2.9.9
+Pygments==2.19.2
+PyJWT==2.10.1
+pytest==8.4.2
+pytest-flask==1.3.0
+python-dotenv==1.0.0
+requests==2.33.1
+SQLAlchemy==2.0.23
+typing_extensions==4.15.0
+urllib3==2.6.3
+Werkzeug==2.3.7
+WTForms==3.2.1

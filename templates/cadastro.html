@@ -11,7 +11,7 @@
 </head>
 <body>
     <form class="formulario-cadastro">
-        
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <img class="img-cadastro" src="../static/imagens/recycle-icon-93a07e 1.png" alt="">
         <h1>Eco Cycle</h1>
         <p>Registre-se e comece a usar!</p>
@@ -25,9 +25,11 @@
         <label for="password">Senha</label>
         <input id="password" class="input-cadastro" placeholder="****************" type="password">
         
+        <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_SITE_KEY'] }}"></div>
+        
         <button class="botao-cadastro" type="submit">Registrar-se agora</button>
 
-    </form>
+    </form>''
     <script src="../static/scripts/cadastro.js"></script>
 </body>
 </html>

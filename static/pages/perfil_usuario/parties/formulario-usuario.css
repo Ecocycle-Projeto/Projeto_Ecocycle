@@ -1,0 +1,8 @@
+.formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    position: relative;
+    margin-bottom: 10px;
+
+}

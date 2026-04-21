@@ -1,0 +1,26 @@
+.foto-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.editar {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.editar > p {
+    position: relative;
+    align-self: center;
+    margin-bottom: 10px;
+    color: green;
+}

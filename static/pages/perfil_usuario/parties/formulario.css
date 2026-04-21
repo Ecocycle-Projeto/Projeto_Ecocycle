@@ -1,0 +1,25 @@
+@import '../../../css/global/variables.css';
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    gap: 20px;
+}
+
+
+.formulario > label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 5px;
+    color: white;
+}
+
+.formulario > label > input {
+    background-color: var(--Cor-cinza);
+    border: none;
+    padding: 4px;
+    width: 250px;
+    color: white;
+}

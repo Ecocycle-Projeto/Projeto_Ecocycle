@@ -41,6 +41,8 @@ def criar_ponto_coleta():
             endereco=dados['endereco'],
             horario_funcionamento=dados['horario_funcionamento'],
             descricao=dados.get('descricao'),
+            latitude=dados['latitude'],
+            longitude=dados['logintude'],
             usuario_id=usuario_id
         )
 
@@ -69,6 +71,9 @@ def atualizar_pontos_coleta(id):
         ponto.endereco = dados.get('endereco', ponto.endereco)
         ponto.horario_funcionamento = dados.get('horario_funcionamento', ponto.horario_funcionamento)
         ponto.descricao = dados.get('descricao', ponto.descricao)
+        ponto.latitude = dados.get('latitude', ponto.latitude)
+        ponto.longitude = dados.get('longitude', ponto.longitude)
+
         db.session.commit()
         return jsonify(mensagem="Ponto de Coleta atualizado com sucesso!", ponto=ponto.to_dict()), 200
     except Exception as e:

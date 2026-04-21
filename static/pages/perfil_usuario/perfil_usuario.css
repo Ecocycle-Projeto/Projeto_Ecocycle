@@ -1,6 +1,12 @@
 @import "../../css/global/global.css";
 @import "./parties/header-ecomap.css";
 @import "./parties/menu-ecomap.css";
+@import"./parties/caixa-pai.css";
+@import "./parties/foto-usuario.css";
+@import "./parties/botoes-formulario.css";
+@import "./parties/formulario-usuario.css";
+@import "./parties/excluir.css";
+@import "./parties/formulario.css";
 
 
 

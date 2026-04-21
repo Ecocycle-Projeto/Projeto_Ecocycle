@@ -11,3 +11,10 @@
     margin-bottom: 10px ;
     border-bottom: 5px solid var(--Cor-verde);
 }
+
+.img-header-ecomap {
+    display: flex;
+    position: relative;
+    top: 15px;
+    height: 40px;
+}

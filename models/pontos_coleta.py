@@ -10,15 +10,19 @@ class Ponto_Coleta(db.Model):
     horario_funcionamento = db.Column(db.String(100), nullable=False)
     descricao = db.Column(db.String(300), nullable=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
+    latitude = db.Column(db.Numeric(precision=9, scale=6), nullable=False)
+    longitude = db.Column(db.Numeric(precision=9, scale=6), nullable=False)
 
     usuario = db.relationship('Usuario', backref=db.backref('pontos_coleta', lazy=True))
 
-    def __init__(self, nome, endereco, horario_funcionamento, descricao, usuario_id):
+    def __init__(self, nome, endereco, horario_funcionamento, descricao, usuario_id, latitude, longitude):
         self.nome = nome
         self.endereco = endereco
         self.horario_funcionamento = horario_funcionamento
         self.descricao = descricao
         self.id_usuario = usuario_id
+        self.latitude = latitude
+        self.longitude = longitude
 
     
 
@@ -30,6 +34,8 @@ class Ponto_Coleta(db.Model):
             'endereco': self.endereco,
             'horario_funcionamento': self.horario_funcionamento,
             'descricao': self.descricao,
+            'latitude': float(self.latitude),
+            'logintude': float(self.longitude),
             'usuario_id': self.id_usuario
         }
     

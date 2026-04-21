@@ -1,0 +1,22 @@
+.excluir {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.excluir > a {
+    display: flex;
+    position: relative;
+    text-decoration: none;
+    height: 30px;  
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+    letter-spacing: 1px;
+    color: red;
+    font-size: 14px;
+
+}
