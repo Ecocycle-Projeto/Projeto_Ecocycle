@@ -1,33 +1,45 @@
 .section-um {
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
+  
+    display: flex;
+    justify-content: center; 
+    width: 100%;
 }
 
 ul {
-    color: white;
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
     display: flex;
     list-style: none;
-    
+    padding: 0;
+    margin: 0;
+    color: white;
+  
+    align-items: center;
 }
 
 li {
     margin-right: 30px;
 }
 
+
+li:last-child {
+    margin-right: 0;
+}
+
 li:first-child {
     background-color: var(--Cor-verde);
     border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+li:first-child:hover {
+    filter: brightness(1.1); 
 }
 
 a {
     text-decoration: none;
     color: #fff;
+    display: inline-block; 
 }
 
 .home {
-    padding: 2px 10px 2px 10px;
+    padding: 2px 10px;
 }

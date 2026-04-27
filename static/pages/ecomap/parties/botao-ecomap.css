@@ -1,4 +1,5 @@
 .botao-ecomap {
+    display: flex;
     height: 50px;
     width: 38px;
     border-bottom: #000 solid 2px;

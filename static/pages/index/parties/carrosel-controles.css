@@ -1,6 +1,6 @@
 .carrosel-controles {
     position: absolute;
-    top: 65%;
+    top: 50%;
     width: 90%;
     display: flex;
     justify-content: space-between;

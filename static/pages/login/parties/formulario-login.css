@@ -1,36 +1,53 @@
-@import '../../../css/global/variables.css';
-
 .formulario-login {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    align-items: center; 
     width: 35vw;
-    height: 80vh;
-    position: relative;
-    top: 100px;
+    min-height: 80vh; 
+    margin: 100px auto; 
+    padding: 2rem; 
     background-color: var(--Cor-fundo);
-    gap: 10px;
+    gap: 15px;
 }
 
-
-.formulario-login > h1 {
-    position: relative;
-    align-self: center;
-    margin-bottom: 10px;
+.formulario-login h1 {
+    margin-bottom: 0.5rem;
 }
 
-.formulario-login > p {
-    position: relative;
-    align-self: center;
-    margin-bottom: 40px;
-
-
+.formulario-login p {
+    margin-bottom: 2rem;
+    text-align: center; 
 }
 
-.formulario-login > a {
-    position: relative;
-    align-self: center;
+.formulario-login a {
     text-decoration: none;
     color: white;
-    border-bottom: 1px green solid;
+    border-bottom: 1px solid var(--Cor-verde); 
+    transition: opacity 0.3s; 
+}
+
+.formulario-login a:hover {
+    opacity: 0.8;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    width: 400px; /* Mesma largura do input */
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    color: white;
+    align-self: flex-start; /* Alinha o texto da label à esquerda */
+    margin-bottom: 5px;
+}
+
+.captcha-container {
+    width: 400px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }

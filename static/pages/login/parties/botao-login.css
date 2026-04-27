@@ -1,14 +1,30 @@
 .botao-login {
     display: flex;
-    position: relative;
-    height: 50px;
-    width: 100%;    
     align-items: center;
     justify-content: center;
-    background-color: #2ba84a ;
-    letter-spacing: 1px;
-    font-weight: bolder;
+    
+    width: 100%;    
+    height: 50px;
+
+    background-color: var(--Cor-verde, #2ba84a); 
+    color: black; 
+    
+    border: none;
+    border-radius: 5px;
+    
     font-size: 20px;
-    margin-bottom: 0px;
-    border-radius: 5px;   
+    font-weight: bolder;
+    letter-spacing: 1px;
+    
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    
+}
+
+.botao-login:hover {
+    background-color: #238a3c; 
+    filter: brightness(1.1);
+}
+.botao-login:active {
+    transform: scale(0.98);
 }

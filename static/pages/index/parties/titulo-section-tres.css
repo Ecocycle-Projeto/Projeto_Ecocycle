@@ -2,5 +2,6 @@
     color: white;
     border-bottom: 2px solid green;
     position: relative;
-    top: 40px;
+    top: 60px;
+    z-index: 1;
 }

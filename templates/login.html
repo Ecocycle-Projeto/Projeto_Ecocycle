@@ -11,30 +11,34 @@
 </head>
 <body>
     <form class="formulario-login" action="">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+    <img class="imagem-login" src="../static/imagens/recycle-icon-93a07e 1.png" alt="Eco Cycle Logo">
+    <h1 class="texto-formulario">Eco Cycle</h1>
+    <p class="texto-formulario">Faça login e comece a usar!</p>
 
-        <img class="imagem-login" src="../static/imagens/recycle-icon-93a07e 1.png" alt="">
-        <h1 class="texto-formulario">Eco Cycle</h1>
-        <p class="texto-formulario">Faça login e comece a usar!</p>
+    <div class="grupo-input">
+        <label for="login-email">Endereço de Email</label>
+        <input id="login-email" class="input-formulario" placeholder="joãopaulo55@gmail.com" type="email">
+    </div>
 
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        
-        <label class="texto-formulario" for="email">Endereço de Email
-            <input id="login-email" class="input-formulario" placeholder="joãopaulo55@gmail.com" type="email">
-        </label>
+    <div class="grupo-input">
+        <label for="login-password">Sua senha</label>
+        <input id="login-password" class="input-formulario" placeholder="*************" type="password">
+    </div>
 
-        <label class="texto-formulario" for="password">Sua senha
-             <input id="login-password" class="input-formulario" placeholder="*************" type="password">
-        </label>
+    <label class="checkbox-formulario">
+        <input type="checkbox">
+        <span>Lembrar de Mim</span>
+    </label>
 
-        <label class="checkbox-formulario" for="check">
-            <input class="input-formulario"  type="checkbox">
-            Lembrar de Mim
-        </label>
+    <div class="captcha-container">
         <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_SITE_KEY'] }}"></div>
+    </div>
 
-        <button class="botao-login"> Entrar na plataforma</button>
-        <a class="link-formulario" href="">Esqueceu sua senha ?</a>
-        <a class="link-formulario" href="./cadastro.html">Não tem conta ? se registre agora!</a>
-    </form>
+    <button type="submit" class="botao-login">Entrar na plataforma</button>
+    
+    <a class="link-formulario" href="">Esqueceu sua senha?</a>
+    <a class="link-formulario" href="./cadastro.html">Não tem conta? Se registre agora!</a>
+</form>
 </body>
 </html>
