@@ -15,6 +15,6 @@ def login():
 def cadastro():
     return render_template("cadastro.html")
 
-@template.route("/Ecomap.html")
+@template.route("/ecomap.html")
 def ecomap():
-    return render_template("Ecomap.html")
+    return render_template("ecomap.html")

@@ -1,33 +1,44 @@
+
 .menu-ecomap {
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
-    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0; 
 }
 
-.menu-ecomap > ul {
-    color: white;
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
+
+.menu-ecomap ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 30px; 
 }
 
-.menu-ecomap > ul > li {
-    margin-right: 30px;
+.menu-ecomap a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    display: block; 
+    padding: 8px 12px;
+    transition: color 0.3s ease, transform 0.2s;
 }
 
-.menu-ecomap > ul > li:first-child {
+.menu-ecomap a:hover {
+    color: var(--Cor-verde);
+    transform: translateY(-2px); 
+}
+
+
+.menu-ecomap li:first-child a {
     background-color: var(--Cor-verde);
     border-radius: 5px;
+    color: #000; 
+    transition: filter 0.3s;
 }
 
-.menu-ecomap > ul > li > a {
-    text-decoration: none;
-    color: white;
-}
-
-.home {
-     padding: 2px 10px 2px 10px;
+.menu-ecomap li:first-child a:hover {
+    filter: brightness(1.2);
+    color: #000; 
 }

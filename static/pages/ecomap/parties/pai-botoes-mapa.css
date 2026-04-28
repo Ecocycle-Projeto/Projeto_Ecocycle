@@ -1,8 +1,11 @@
 .pai-botoes-mapa {
     display: flex;
     flex-direction: column;
-    justify-content: right;
-    position: relative;
-    height: 200px;
-    left: 880px;
+    gap: 10px;
+    
+    position: absolute; 
+    right: 15px; 
+    top: 50%;    
+    transform: translateY(-50%); 
+    z-index: 10; 
 }

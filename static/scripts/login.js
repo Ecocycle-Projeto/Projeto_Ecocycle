@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Redireciona após um pequeno atraso
                 setTimeout(() => {
-                    window.location.href = 'Ecomap.html';
+                    window.location.href = 'ecomap.html';
                 }, 500);
 
             } else {
