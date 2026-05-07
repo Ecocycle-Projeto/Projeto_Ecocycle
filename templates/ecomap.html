@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/pages/ecomap/ecomap.css">
     <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
     <title>|-Ecomap</title>
 </head>
 <body>
@@ -23,13 +23,13 @@
     </menu>
     <h1 class="titulo-ecomap">ECOMAP</h1>
     <section class="mapa">
-        <input class="input-ecomap" type="text">
+        <input class="input-ecomap" type="text" placeholder="Buscar ponto de coleta...">
         <img class="i-ecomap-pesquisa" src="../static/imagens/icons8-pesquisar-50 1.png" alt="">
-        
+        <div id="map" style="width:100%; height:500px; border-radius:12px; z-index:1;"></div>
         <aside class="pai-botoes-mapa">
-            <button id = "top"class="botao-ecomap">+</button>
+            <button id="top" class="botao-ecomap">+</button>
             <button class="botao-ecomap">-</button>
-            <button id = "bottom" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/icons8-mapa-50 1.png" alt=""></button>
+            <button id="bottom" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/icons8-mapa-50 1.png" alt=""></button>
             <button class="botao-ecomap-legenda"><img class="icone-botao" src="../static/imagens/icons8-sinal-de-reciclagem-50.png" alt=""></button>
         </aside>
     </section>
@@ -39,16 +39,9 @@
         </div>
         <div class="caixa-cards">
             <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -57,17 +50,10 @@
                 <p class="impacto"></p>
                 <button class="botao-card"></button>
             </div>
-               <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+            <div class="card">
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -76,17 +62,10 @@
                 <p class="impacto"></p>
                 <button class="botao-card"></button>
             </div>
-               <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+            <div class="card">
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -103,16 +82,9 @@
         </div>
         <div class="caixa-cards">
             <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -121,17 +93,10 @@
                 <p class="impacto"></p>
                 <button class="botao-card"></button>
             </div>
-               <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+            <div class="card">
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -140,17 +105,10 @@
                 <p class="impacto"></p>
                 <button class="botao-card"></button>
             </div>
-               <div class="card">
-                <div class="icone-agenda">
-                    <img src="" alt="">
-                </div>
-                <div class="icone-mapa">
-                    <img src="" alt="">
-                    <button></button>
-                </div>
-                <div class="estrela">
-                    <img src="" alt="">
-                </div>
+            <div class="card">
+                <div class="icone-agenda"><img src="" alt=""></div>
+                <div class="icone-mapa"><img src="" alt=""><button></button></div>
+                <div class="estrela"><img src="" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -161,5 +119,67 @@
             </div>
         </div>
     </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+        const map = L.map('map').setView([-8.2830, -35.9753], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        function getCorNivel(nivel) {
+            if (nivel < 50) return 'green';
+            if (nivel < 80) return 'orange';
+            return 'red';
+        }
+
+        function criarIcone(nivel) {
+            return L.divIcon({
+                className: '',
+                html: `<div style="
+                    background:${getCorNivel(nivel)};
+                    width:20px; height:20px;
+                    border-radius:50% 50% 50% 0;
+                    transform:rotate(-45deg);
+                    border:2px solid white;
+                    box-shadow:0 2px 6px rgba(0,0,0,0.4);
+                "></div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 20],
+                popupAnchor: [0, -22]
+            });
+        }
+
+        const token = localStorage.getItem('access_token');
+
+        fetch('/pontos_coleta', {
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const pontos = data.pontos || [];
+            pontos.forEach(p => {
+                const nivel = p.nivel_preenchimento || 0;
+                const marker = L.marker([p.latitude, p.logintude], {
+                    icon: criarIcone(nivel)
+                }).addTo(map);
+
+                marker.bindPopup(`
+                    <b>♻️ ${p.nome}</b><br>
+                    📍 ${p.endereco}<br>
+                    🕐 ${p.horario_funcionamento || 'Não informado'}<br>
+                    📊 Nível: <b style="color:${getCorNivel(nivel)}">${nivel}%</b><br>
+                    ${p.descricao ? '<i>' + p.descricao + '</i>' : ''}
+                `);
+            });
+        })
+        .catch(err => {
+            console.error('Erro ao carregar pontos:', err);
+        });
+    </script>
 </body>
 </html>
