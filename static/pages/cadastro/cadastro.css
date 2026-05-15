@@ -2,6 +2,8 @@
 @import './parties/formulario-cadastro.css';
 @import './parties/img-cadastro.css';
 @import './parties/input-cadastro.css';
+@import './parties/termos.css';
+@import './parties/modalTermos.css';
 @import '../../css/global/normalizer.css';
 @import '../../css/global/global.css';
 

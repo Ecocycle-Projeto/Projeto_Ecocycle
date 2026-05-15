@@ -1,0 +1,40 @@
+.termos {
+    display: flex;
+    align-items: center; 
+    gap: 12px;           
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(43, 168, 74, 0.05); 
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.termos:hover {
+    background-color: rgba(43, 168, 74, 0.1);
+}
+
+.termos input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #2BA84A; 
+}
+
+.termos label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #e0e0e0; 
+    user-select: none; 
+}
+
+.termos a {
+    color: #2BA84A;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.termos a:hover {
+    border-bottom-color: #2BA84A;
+}

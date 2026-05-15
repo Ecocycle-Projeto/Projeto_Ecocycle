@@ -3,6 +3,7 @@ from flask import jsonify, request
 from werkzeug.security import generate_password_hash
 from models.usuario import Usuario
 from utils.validar_recaptcha import validar_recaptchar
+from datetime import datetime
 from db import db
 
 
@@ -35,20 +36,26 @@ def filtrar_usuario(id):
 @usuario_bp.route('/usuario', methods=['POST'])
 def criar_usuario():
         data = request.get_json()
-        senha_hash = generate_password_hash(data['senha'], method='pbkdf2:sha256')
-        novo_usuario = Usuario(nome=data['nome'], email=data['email'], senha=senha_hash)
         recaptcha_response = data.get('g-recaptcha-response')
+        termos = data.get('termosAceitos')
+
+        if not termos:
+            return jsonify(mensagem="Aceite os termos de uso para continuar!"), 400
 
         if not validar_recaptchar(recaptcha_response):
             return jsonify(mensagem="Verificação do reCAPTCHA falhou ou ausente!"), 400
-        
+    
         try:
+            senha_hash = generate_password_hash(data['senha'], method='pbkdf2:sha256')
+            novo_usuario = Usuario(nome=data['nome'], email=data['email'], senha=senha_hash, termos=True, data_aceito=datetime.now())
+
             db.session.add(novo_usuario)
             db.session.commit()
             return jsonify(mensagem="Usuário criado com sucesso"), 201
+        
         except Exception as e:
             db.session.rollback()
-            return jsonify(erro=str(e)), 500  
+            return jsonify(mensagem=f"Erro ao cadastrar: {str(e)}") 
         
 # A rota para atualizar um usuário existente
 @usuario_bp.route('/usuario/<int:id>', methods=['PUT'])

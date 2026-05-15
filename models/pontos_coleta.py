@@ -20,9 +20,9 @@ class Ponto_Coleta(db.Model):
         self.endereco = endereco
         self.horario_funcionamento = horario_funcionamento
         self.descricao = descricao
-        self.id_usuario = usuario_id
         self.latitude = latitude
         self.longitude = longitude
+        self.id_usuario = usuario_id
 
     
 
@@ -35,7 +35,7 @@ class Ponto_Coleta(db.Model):
             'horario_funcionamento': self.horario_funcionamento,
             'descricao': self.descricao,
             'latitude': float(self.latitude),
-            'logintude': float(self.longitude),
+            'longitude': float(self.longitude),
             'usuario_id': self.id_usuario
         }
     

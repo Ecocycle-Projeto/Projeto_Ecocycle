@@ -1,8 +1,8 @@
 @import './parties/header-ecomap.css';
 @import './parties/menu-ecomap.css';
+@import './parties/modal-cadastro.css';
 @import './parties/img-header-ecomap.css';
 @import './parties/botao-ecomap.css';
-@import './parties/legenda-ecomap.css';
 @import './parties/pai-botoes-mapa.css';
 @import './parties/mapa.css';
 @import './parties/pai-input-ecomap.css';

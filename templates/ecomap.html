@@ -12,6 +12,9 @@
     <header class="header-ecomap">
         <img class="img-header-ecomap" src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="">
     </header>
+    <button id="btn-logout" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: #e74c3c; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+    Sair / Logout
+    </button>
     <menu class="menu-ecomap">
         <ul>
             <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
@@ -23,13 +26,13 @@
     </menu>
     <h1 class="titulo-ecomap">ECOMAP</h1>
     <section class="mapa">
-        <input class="input-ecomap" type="text" placeholder="Buscar ponto de coleta...">
+        <input id="pesquisa" class="input-ecomap" type="text" placeholder="Buscar ponto de coleta...">
         <img class="i-ecomap-pesquisa" src="../static/imagens/icons8-pesquisar-50 1.png" alt="">
-        <div id="map" style="width:100%; height:500px; border-radius:12px; z-index:1;"></div>
+        <div id="map" style="flex-grow: 1; height: 100%; border-radius: 12px; z-index: 1;"></div>
         <aside class="pai-botoes-mapa">
-            <button id="top" class="botao-ecomap">+</button>
-            <button class="botao-ecomap">-</button>
-            <button id="bottom" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/icons8-mapa-50 1.png" alt=""></button>
+            <button id="btn-zoom-in" class="botao-ecomap">+</button>
+            <button id="btn-zoom-out" class="botao-ecomap">-</button>
+            <button id="localizacao" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/icons8-mapa-50 1.png" alt=""></button>
             <button class="botao-ecomap-legenda"><img class="icone-botao" src="../static/imagens/icons8-sinal-de-reciclagem-50.png" alt=""></button>
         </aside>
     </section>
@@ -120,66 +123,43 @@
         </div>
     </section>
 
+    */* modal-cadastro-pontos */*
+
+    <div id="modal-cadastro" class="modal-container">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <h2>Novo Ponto de Coleta</h2>
+        <hr>
+        
+        <div class="form-group">
+            <label>Nome do Local</label>
+            <input type="text" id="cad-nome" placeholder="Ex: Ecoponto Central">
+        </div>
+
+        <div class="form-group">
+            <label>Endereço</label>
+            <input type="text" id="cad-endereco" placeholder="Rua, número, bairro...">
+        </div>
+
+        <div class="form-group">
+            <label>Horário de Funcionamento</label>
+            <input type="text" id="cad-horario" placeholder="Seg a Sex: 08h - 18h">
+        </div>
+
+        <div class="form-group">
+            <label>Descrição / Materiais</label>
+            <textarea id="cad-descricao" maxlength="300" placeholder="O que pode ser descartado aqui?"></textarea>
+        </div>
+
+        <div class="coordenadas-display">
+            <span>Lat: <b id="display-lat"></b></span>
+            <span>Lng: <b id="display-lng"></b></span>
+        </div>
+
+        <button class="botao-salvar" onclick="salvarPontoNoServidor()">Cadastrar Ponto</button>
+    </div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script>
-        const map = L.map('map').setView([-8.2830, -35.9753], 12);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
-            maxZoom: 19
-        }).addTo(map);
-
-        function getCorNivel(nivel) {
-            if (nivel < 50) return 'green';
-            if (nivel < 80) return 'orange';
-            return 'red';
-        }
-
-        function criarIcone(nivel) {
-            return L.divIcon({
-                className: '',
-                html: `<div style="
-                    background:${getCorNivel(nivel)};
-                    width:20px; height:20px;
-                    border-radius:50% 50% 50% 0;
-                    transform:rotate(-45deg);
-                    border:2px solid white;
-                    box-shadow:0 2px 6px rgba(0,0,0,0.4);
-                "></div>`,
-                iconSize: [20, 20],
-                iconAnchor: [10, 20],
-                popupAnchor: [0, -22]
-            });
-        }
-
-        const token = localStorage.getItem('access_token');
-
-        fetch('/pontos_coleta', {
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            const pontos = data.pontos || [];
-            pontos.forEach(p => {
-                const nivel = p.nivel_preenchimento || 0;
-                const marker = L.marker([p.latitude, p.logintude], {
-                    icon: criarIcone(nivel)
-                }).addTo(map);
-
-                marker.bindPopup(`
-                    <b>♻️ ${p.nome}</b><br>
-                    📍 ${p.endereco}<br>
-                    🕐 ${p.horario_funcionamento || 'Não informado'}<br>
-                    📊 Nível: <b style="color:${getCorNivel(nivel)}">${nivel}%</b><br>
-                    ${p.descricao ? '<i>' + p.descricao + '</i>' : ''}
-                `);
-            });
-        })
-        .catch(err => {
-            console.error('Erro ao carregar pontos:', err);
-        });
-    </script>
+    <script src="../static/scripts/ecomap.js"></script>
 </body>
 </html>

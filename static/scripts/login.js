@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    
+    if (localStorage.getItem('access_token')) {
+    
+    window.location.href = 'ecomap.html';
+    return;
+    }
+
     const formLogin = document.querySelector('.formulario-login');
     
     formLogin.addEventListener('submit', async (e) => {
@@ -34,22 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (!response.ok) {
-                // Se o reCAPTCHA falhar no back-end, o Google invalida o token.
                 grecaptcha.reset(); 
                 throw new Error(data.mensagem || 'Erro no login');
             }
 
-            // A API Flask retorna um 401 em caso de falha.
-            if (!response.ok) {
-                throw new Error(data.mensagem || 'Erro no login');
-            }
-
-            // SUCESSO! Armazene o token de forma segura.
-            // back-end deve retornar o token na chave 'access_token'
             if (data.access_token) {
                 localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('refresh_token', data.refresh_token);
                 
-
                 if (data.user) {
                     localStorage.setItem('userData', JSON.stringify(data.user));
                 }
