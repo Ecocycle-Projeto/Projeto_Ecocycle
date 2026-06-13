@@ -1,0 +1,14 @@
+@import './parties/header-admin.css';
+@import './parties/menu-admin.css';
+@import './parties/menu-tabela-admin.css';
+@import './parties/busca-admin.css';
+@import './parties/tabela-admin.css';
+@import './parties/modal-admin.css';
+@import '../../css/global/normalizer.css';
+@import '../../css/global/variables.css';
+
+html {
+    background-color: var(--Cor-fundo);
+    margin: 0;
+    padding: 0;
+}
