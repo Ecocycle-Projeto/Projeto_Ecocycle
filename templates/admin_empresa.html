@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoMap — Administração de Empresas</title>
+  
+  <link rel="stylesheet" href="../static/pages/admin_empresa/admin_empresa.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  
+  <script src="../static/scripts/auth-guard.js"></script>
+  <script src="../static/scripts/admin_empresa.js" defer></script> </head>
+<body>
+
+  <header>
+    <img src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="Banner EcoCycle">
+  </header>
+
+  <menu class="menu-ponto">
+    <ul>
+      <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
+      <li><a href="#">SERVIÇOS</a></li>
+      <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+      <li><a href="#">CONTATO</a></li>
+      <li><a href="#">PERFIL</a></li>
+
+      <li class="menu-admin" id="menuAdmin" style="display:none;">
+        <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+        <ul class="dropdown-admin" id="dropdownAdmin">
+          <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+        </ul>
+      </li>
+    </ul>
+  </menu>
+
+  <section class="pai-tabela">
+
+    <div class="menu-tabela">
+      <button id="btnAdicionar">+ Adicionar</button>
+      <button id="btnEditar" disabled>✏ Editar</button>
+      <div class="busca">
+        <input type="text" id="campoBusca" placeholder="Buscar por nome, CNPJ...">
+      </div>
+      <button id="btnExcluir" disabled>🗑 Excluir Selecionados</button>
+    </div>
+
+    <div class="tabela">
+      <table id="tabelaEmpresas">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="checkAll"></th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaCorpo">
+          {% for empresa in empresas %}
+          <tr data-id="{{ empresa.id }}">
+            <td><input type="checkbox" class="row-check"></td>
+            <td>{{ empresa.nome }}</td>
+            <td>{{ empresa.cnpj }}</td>
+            <td>{{ empresa.email }}</td>
+            <td>{{ empresa.telefone or '—' }}</td>
+            <td>{{ '✅ Ativa' if empresa.ativa else '⛔ Inativa' }}</td>
+            <td>
+              <button class="btn-excluir-linha" data-id="{{ empresa.id }}" title="Excluir">🗑</button>
+            </td>
+          </tr>
+          {% else %}
+          <tr id="emptyRow">
+            <td colspan="7" style="text-align: center;">Nenhuma empresa cadastrada ainda.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <div id="modalOverlay" style="display: none;">
+    <div id="modal">
+
+      <div class="modal-header">
+        <h2 id="modalTitulo">Nova Empresa</h2>
+        <button id="modalFechar">✕</button>
+      </div>
+
+      <form id="formEmpresa">
+        <input type="hidden" id="empresaId" name="id">
+
+        <label for="inputNome">Nome *</label>
+        <input type="text" id="inputNome" name="nome"
+               placeholder="Ex: EcoColeta Caruaru" required>
+
+        <label for="inputCnpj">CNPJ *</label>
+        <input type="text" id="inputCnpj" name="cnpj"
+               placeholder="00.000.000/0001-00" required>
+
+        <label for="inputEmail">Email *</label>
+        <input type="email" id="inputEmail" name="email"
+               placeholder="contato@empresa.com" required>
+
+        <label for="inputTelefone">Telefone</label>
+        <input type="text" id="inputTelefone" name="telefone"
+               placeholder="(81) 99999-0000">
+
+        <label for="inputDescricao">Descrição</label>
+        <textarea id="inputDescricao" name="descricao" rows="3"
+                  placeholder="Descreva os serviços da empresa..."></textarea>
+
+        <label for="inputEndereco">Endereço *</label>
+        <div class="endereco-grupo">
+          <input type="text" id="inputEndereco" name="endereco"
+                 placeholder="Rua, número, bairro, cidade" required>
+          <button type="button" id="btnLocalizar">🔍 Localizar</button>
+        </div>
+
+        <input type="hidden" id="inputLat" name="latitude">
+        <input type="hidden" id="inputLng" name="longitude">
+
+        <div id="miniMapaContainer" style="display: none;">
+          <div id="miniMapa" style="height: 250px; width: 100%; border-radius: 4px; margin-bottom: 8px;"></div>
+          <div class="coordenadas-display" style="font-size: 0.85em; color: #555;">
+            <span>Lat: <b id="display-lat">-</b></span> |
+            <span>Lng: <b id="display-lng">-</b></span>
+          </div>
+        </div>
+
+        <label for="inputAtiva">Status</label>
+        <select id="inputAtiva" name="ativa">
+          <option value="true">Ativa</option>
+          <option value="false">Inativa</option>
+        </select>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelarModal">Cancelar</button>
+          <button type="submit" id="btnSalvarModal">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

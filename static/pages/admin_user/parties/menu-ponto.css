@@ -1,0 +1,92 @@
+
+.menu-ponto {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0; 
+}
+
+
+.menu-ponto ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 30px; 
+}
+
+.menu-ponto a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    display: block; 
+    padding: 8px 12px;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.menu-ponto a:hover {
+    color: var(--Cor-verde);
+    transform: translateY(-2px); 
+}
+
+
+.menu-ponto li:first-child a {
+    background-color: var(--Cor-verde);
+    border-radius: 5px;
+    color: #000; 
+    transition: filter 0.3s;
+}
+
+.menu-ponto li:first-child a:hover {
+    filter: brightness(1.2);
+    color: #000; 
+}
+/* Menu Admin */
+
+.menu-admin {
+    position: relative;
+}
+
+.menu-admin > a {
+    color: #2BA84A;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dropdown-admin {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #161818;
+    border: 1px solid #2BA84A;
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.dropdown-admin li {
+    list-style: none;
+}
+
+.dropdown-admin li a {
+    display: block;
+    padding: 10px 16px;
+    color: #d4e8d4;
+    font-size: 13px;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-admin li a:hover {
+    background-color: #2BA84A;
+    color: #0d110d;
+}
+
+/* Abre o dropdown no hover */
+.menu-admin:hover .dropdown-admin {
+    display: block !important;
+}

@@ -22,14 +22,22 @@ def autenticar():
             return jsonify(mensagem="Verificação do reCAPTCHA falhou ou ausente!"), 400
 
         usuario = Usuario.query.filter_by(email=email).first()
-
         if usuario and check_password_hash(usuario.senha, senha):
-            access_token = create_access_token(identity=str(usuario.id))
-            refresh_token = create_refresh_token(identity=str(usuario.id))
-            
+
+            additional_claims = {'role': usuario.role}
+
+            access_token  = create_access_token(
+                identity=str(usuario.id),
+                additional_claims=additional_claims
+            )
+            refresh_token = create_refresh_token(
+                identity=str(usuario.id),
+                additional_claims=additional_claims
+            )
+
             return jsonify(
                 access_token=access_token,
-                refresh_token=refresh_token, 
+                refresh_token=refresh_token,
                 user=usuario.to_dict(),
                 mensagem="Login realizado com sucesso"
             ), 200

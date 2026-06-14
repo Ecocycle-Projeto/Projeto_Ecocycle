@@ -1,0 +1,14 @@
+@import '../../css/global/variables.css';
+@import '../../css/global/normalizer.css';
+@import"./parties/modal.css";
+@import"./parties/header.css";
+@import"./parties/menu-ponto.css";
+@import"./parties/menu-tabela.css";
+@import"./parties/tabela.css";
+
+
+html {
+    background-color: var(--Cor-fundo);
+    margin: 0;
+    padding: 0;
+}

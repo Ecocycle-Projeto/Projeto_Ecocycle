@@ -1,17 +1,17 @@
 .menu-ecomap {
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
-    margin-bottom: 40px;
+     display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0; 
 }
 
-.menu-ecomap > ul {
-    color: white;
-    position: relative;
-    justify-self: center;
-    justify-items: flex-start;
-    display: flex;
+.menu-ecomap  ul {
+   display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 30px; 
 }
 
 .menu-ecomap > ul > li {

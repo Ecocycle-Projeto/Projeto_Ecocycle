@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (data.user) {
                     localStorage.setItem('userData', JSON.stringify(data.user));
+                    localStorage.setItem('role', data.user.role);
                 }
 
                 alert(data.mensagem);

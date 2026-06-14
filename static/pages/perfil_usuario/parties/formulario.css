@@ -1,12 +1,23 @@
 @import '../../../css/global/variables.css';
 
+/* 1. Ajustando o container que segura o formulário */
+.formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o formulário horizontalmente na tela */
+    position: relative;
+    width: 100%;         
+    margin-top: 20px;    /* Afasta um pouco da foto de perfil */
+    margin-bottom: 25px; /* Espaço antes de começarem os botões */
+}
+
+/* 2. O seu formulário (mantive sua estrutura com ajustes de alinhamento) */
 .formulario {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    align-items: center; /* Garante que os inputs fiquem alinhados no centro */
     gap: 20px;
 }
-
 
 .formulario > label {
     display: flex;
@@ -14,12 +25,25 @@
     position: relative;
     gap: 5px;
     color: white;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .formulario > label > input {
     background-color: var(--Cor-cinza);
     border: none;
-    padding: 4px;
+    border-radius: 5px;  /* Arredonda levemente as bordas para combinar com os botões */
+    height: 35px;        /* Define uma altura confortável para o campo */
+    padding: 0 10px;     /* Aumentado para o texto não ficar colado na borda esquerda */
     width: 250px;
     color: white;
+    font-size: 14px;
+    outline: none;       /* Remove a borda padrão do navegador ao clicar */
+    transition: box-shadow 0.2s;
+}
+
+/* 3. Bônus: Um efeito visual sutil quando o usuário clica no input */
+.formulario > label > input:focus {
+    box-shadow: 0 0 0 2px #2ba84a; /* Cria uma bordinha verde sem mexer no tamanho do input */
 }

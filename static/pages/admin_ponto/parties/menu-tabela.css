@@ -1,0 +1,33 @@
+.menu-tabela {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background-color: #2BA84A;
+  border-radius: 8px 8px 0 0;
+}
+
+.menu-tabela button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.menu-tabela button:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.menu-tabela button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

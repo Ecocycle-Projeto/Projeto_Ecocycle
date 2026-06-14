@@ -3,13 +3,17 @@
 
 .header-ecomap{
     display: flex;
+    align-items: center; 
+    justify-content: space-between; 
     background-color: var(--Cor-fundo);
     width: 70vw;
-    height: 10vh;
-    position: relative;
-    justify-self: center;
-    margin-bottom: 10px ;
+    min-height: 10vh; 
+    
+    margin: 0 auto 10px auto; 
+    padding: 0 2rem; 
+    
     border-bottom: 5px solid var(--Cor-verde);
+    box-sizing: border-box; 
 }
 
 .img-header-ecomap {

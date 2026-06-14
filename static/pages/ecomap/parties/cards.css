@@ -1,10 +1,11 @@
 /* 1. Container e Estrutura do Card */
 .caixa-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 580px));
     gap: 30px;
     padding: 20px;
-    justify-items: center;
+    justify-content: start;
+    justify-items: start;
 }
 
 .card {
@@ -13,11 +14,11 @@
     border-radius: 20px;
     padding: 15px;
     width: 100%;
-    max-width: 580px; /* Largura menor para ser vertical */
-    min-height: 540px; /* Altura maior */
+    max-width: 580px; 
+    min-height: 540px; 
     display: flex;
     flex-direction: column;
-    position: relative; /* Necessário para os ícones flutuarem */
+    position: relative; 
     transition: all 0.3s ease;
 }
 
@@ -26,7 +27,6 @@
     border-color: #2BA84A;
     box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
-
 /* 2. Imagem Principal */
 .imagem-card {
     width: 100%;

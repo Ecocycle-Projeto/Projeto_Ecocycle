@@ -1,9 +1,12 @@
 .excluir {
     display: flex;
     flex-direction: column;
-    justify-self: center;
     position: relative;
-    margin-bottom: 10px;
+    
+    /* CONTROLADORES DE ESPAÇO: */
+    margin-top: 40px;    /* Cria um espaço entre os botões de cima e o Excluir */
+    margin-bottom: 20px; /* Garante que ele não cole na barra final do navegador */
+    
     padding: 20px;
 }
 

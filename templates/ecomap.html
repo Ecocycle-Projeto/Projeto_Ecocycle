@@ -19,9 +19,19 @@
         <ul>
             <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
             <li><a href="#">SERVIÇOS</a></li>
-            <li><a href="#">CLIENTES</a></li>
-            <li><a href="#">PROJETOS</a></li>
+            <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
             <li><a href="#">CONTATO</a></li>
+            <li><a href="#">PERFIL</a></li>
+
+            <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+                <ul class="dropdown-admin" id="dropdownAdmin">
+                    <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+                </ul>
+            </li>
         </ul>
     </menu>
     <h1 class="titulo-ecomap">ECOMAP</h1>
@@ -32,7 +42,7 @@
         <aside class="pai-botoes-mapa">
             <button id="btn-zoom-in" class="botao-ecomap">+</button>
             <button id="btn-zoom-out" class="botao-ecomap">-</button>
-            <button id="localizacao" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/icons8-mapa-50 1.png" alt=""></button>
+            <button id="localizacao" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/lcone-localizar1.png" alt=""></button>
             <button class="botao-ecomap-legenda"><img class="icone-botao" src="../static/imagens/icons8-sinal-de-reciclagem-50.png" alt=""></button>
         </aside>
     </section>
@@ -42,9 +52,9 @@
         </div>
         <div class="caixa-cards">
             <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
+                <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
+                <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
+                <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
                 <img class="imagem-card" src="" alt="">
                 <h2 class="titulo-servico"></h2>
                 <p class="descricao-servico"></p>
@@ -123,8 +133,6 @@
         </div>
     </section>
 
-    */* modal-cadastro-pontos */*
-
     <div id="modal-cadastro" class="modal-container">
     <div class="modal-content">
         <span class="close-modal" onclick="fecharModal()">&times;</span>
@@ -160,6 +168,7 @@
     </div>
 </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="../static/scripts/auth-guard.js"></script>
     <script src="../static/scripts/ecomap.js"></script>
 </body>
 </html>

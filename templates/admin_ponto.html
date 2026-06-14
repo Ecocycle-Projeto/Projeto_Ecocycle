@@ -1,11 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração de Pontos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoMap — Administração de Pontos</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+        crossorigin="" />
+        
+  <link rel="stylesheet" href="../static/pages/admin_ponto/admin_ponto.css">
+  
+  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+          crossorigin=""></script>
+   <script src="../static/scripts/auth-guard.js"></script>
+          
+  <script src="../static/scripts/admin_pontos.js" defer></script>
 </head>
 <body>
-    
+
+  <header>
+      <img src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="Banner EcoCycle">
+  </header>
+
+  <menu class="menu-ponto">
+    <<ul>
+            <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
+            <li><a href="#">SERVIÇOS</a></li>
+            <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+            <li><a href="#">CONTATO</a></li>
+            <li><a href="#">PERFIL</a></li>
+
+            <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+                <ul class="dropdown-admin" id="dropdownAdmin">
+                    <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+                </ul>
+            </li>
+        </ul>
+  </menu>
+
+  <section class="pai-tabela">
+
+    <div class="menu-tabela">
+      <button id="btnAdicionar">+ Adicionar</button>
+      <button id="btnEditar" disabled>✏ Editar</button>
+      <div class="busca">
+        <input type="text" id="campoBusca" placeholder="Buscar por nome, endereço...">
+      </div>
+      <button id="btnExcluir" disabled>🗑 Excluir Selecionados</button>
+    </div>
+
+    <div class="tabela">
+      <table id="tabelaPontos">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="checkAll"></th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Horário de Funcionamento</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaCorpo">
+          {% for ponto in pontos %}
+          <tr data-id="{{ ponto.id }}" data-lat="{{ ponto.latitude }}" data-lng="{{ ponto.longitude }}">
+            <td><input type="checkbox" class="row-check"></td>
+            <td>{{ ponto.nome }}</td>
+            <td>{{ ponto.endereco }}</td>
+            <td>{{ ponto.horario_funcionamento }}</td>
+            <td>{{ ponto.descricao or 'Sem descrição' }}</td>
+            <td>
+              <button class="btn-excluir-linha" data-id="{{ ponto.id }}" title="Excluir este ponto">🗑</button>
+            </td>
+          </tr>
+          {% else %}
+          <tr id="emptyRow">
+            <td colspan="6" style="text-align: center;">Nenhum ponto cadastrado ainda.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <div id="modalOverlay" style="display: none;">
+    <div id="modal">
+
+      <div class="modal-header">
+        <h2 id="modalTitulo">Novo Ponto de Coleta</h2>
+        <button id="modalFechar">✕</button>
+      </div>
+
+      <form id="formPonto">
+        <input type="hidden" id="pontoId" name="id">
+        <input type="hidden" id="inputLat" name="latitude">
+        <input type="hidden" id="inputLng" name="longitude">
+
+        <label for="inputNome">Nome *</label>
+        <input type="text" id="inputNome" name="nome"
+               placeholder="Ex: Ecoponto Central" required>
+
+        <label for="inputEndereco">Endereço *</label>
+        <div class="endereco-grupo">
+          <input type="text" id="inputEndereco" name="endereco"
+                 placeholder="Rua, número, bairro, cidade" required>
+          <button type="button" id="btnLocalizar">🔍 Localizar</button>
+        </div>
+
+        <div id="miniMapaContainer" style="display: none;">
+          <div id="miniMapa" style="height: 250px; width: 100%; border-radius: 4px; margin-bottom: 8px;"></div>
+          <div class="coordenadas-display" style="font-size: 0.85em; color: #555;">
+            <span>Lat: <b id="display-lat">-</b></span> | 
+            <span>Lng: <b id="display-lng">-</b></span>
+          </div>
+        </div>
+
+        <label for="inputHorario">Horário de Funcionamento *</label>
+        <input type="text" id="inputHorario" name="horario_funcionamento"
+               placeholder="Ex: Seg–Sex 08h–18h" required>
+
+        <label for="inputDescricao">Descrição</label>
+        <textarea id="inputDescricao" name="descricao" rows="3" placeholder="Insira detalhes sobre materiais aceitos..."></textarea>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelarModal">Cancelar</button>
+          <button type="submit" id="btnSalvarModal">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

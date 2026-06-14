@@ -1,26 +1,45 @@
 .foto-usuario {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    align-items: center;    
+    justify-content: center; 
     position: relative;
-    margin-bottom: 10px;
     background-color: white;
-    border-radius: 100%;
-    padding: 20px;
-    margin-bottom: 10px;
+    border-radius: 100%;    
+    padding: 15px; /* Diminuído levemente para a imagem aproveitar melhor o espaço interno */
+    margin-top: 40px;       /* Um pouco mais de espaço em relação ao menu */
+    margin-bottom: 15px;    /* Espaço até o texto "EDITAR" */
+    
+    /* AUMENTADO: Mudamos de 100px para 150px para dar o destaque ideal */
+    width: 150px;           
+    height: 150px;          
+}
+
+/* Garante que a imagem do ícone preencha o novo tamanho do círculo */
+.foto-usuario > img {
+    width: 85%;  /* Ocupa a maior parte do círculo branco */
+    height: 85%;
+    object-fit: contain; /* Mantém a proporção perfeita do bonequinho sem cortar */
 }
 
 .editar {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    align-items: center;    
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 30px;    /* Um espaço ligeiramente maior antes de começar o formulário */
 }
 
 .editar > p {
     position: relative;
-    align-self: center;
-    margin-bottom: 10px;
-    color: green;
+    margin: 0;              
+    color: #2ba84a;         
+    font-size: 15px;        /* Aumentado de 14px para 15px para acompanhar o tamanho da foto */
+    font-weight: bold;
+    letter-spacing: 1.5px;  /* Texto um pouco mais espaçado e elegante */
+    cursor: pointer;        
+}
+
+.editar > p:hover {
+    text-decoration: underline; 
 }

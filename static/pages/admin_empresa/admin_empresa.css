@@ -1,0 +1,13 @@
+@import "./parties/header.css";
+@import "./parties/menu-ponto.css";
+@import "./parties/menu-tabela.css";
+@import "./parties/modal.css";
+@import "./parties/tabela.css";
+@import "../../css/global/global.css";
+
+
+html {
+    background-color: var(--Cor-fundo);
+    margin: 0;
+    padding: 0;
+}
