@@ -1,6 +1,5 @@
 /* Ícone de pin antes do primeiro botão */
 #btnAdicionar::before {
-  content: '📍';
   font-size: 14px;
 }
 

@@ -25,29 +25,41 @@ def get_dados_mapa():
                 'endereco':             p.endereco,
                 'horario_funcionamento': p.horario_funcionamento,
                 'descricao':            p.descricao,
-                'latitude':             float(p.latitude),
-                'longitude':            float(p.longitude),
+                'latitude':             float(p.latitude) if p.latitude else 0.0,
+                'longitude':            float(p.longitude) if p.longitude else 0.0,
                 'percentual_atual':     p.percentual_atual or 0,
                 'usuario_id':           p.id_usuario
             } for p in pontos],
+            
             condominios=[{
                 'id':          c.id,
                 'nome':        c.nome,
                 'responsavel': c.responsavel,
                 'telefone':    c.telefone,
-                'endereco':    c.ponto_coleta.endereco,
-                'latitude':    float(c.ponto_coleta.latitude),
-                'longitude':   float(c.ponto_coleta.longitude),
+                'endereco':    c.ponto_coleta.endereco if c.ponto_coleta else "Endereço indisponível",
+                'latitude':    float(c.ponto_coleta.latitude) if (c.ponto_coleta and c.ponto_coleta.latitude) else 0.0,
+                'longitude':   float(c.ponto_coleta.longitude) if (c.ponto_coleta and c.ponto_coleta.longitude) else 0.0,
+                # 🎯 CORREÇÃO: Enviando o ID do criador que o front-end estava cobrando no console!
+                'id_usuario':  c.id_usuario 
             } for c in condominios],
+            
             empresas=[{
-                'id':        e.id,
-                'nome':      e.nome,
-                'descricao': e.descricao,
-                'telefone':  e.telefone,
-                'latitude':  float(e.latitude),
-                'longitude': float(e.longitude),
+                'id':         e.id,
+                'nome':       e.nome,
+                'descricao':  e.descricao,
+                'telefone':   e.telefone,
+                'latitude':   float(e.latitude) if e.latitude else 0.0,
+                'longitude':  float(e.longitude) if e.longitude else 0.0,
+                'id_usuario': e.id_usuario,
+                # 🎯 NOVIDADE: Mapeia os serviços ativos vinculados a esta empresa
+                'servicos': [{
+                    'id':        s.id,
+                    'nome':      s.nome,
+                    'descricao': s.descricao
+                } for s in e.servicos if s.ativo]
             } for e in empresas]
         ), 200
 
     except Exception as e:
+        print("❌ ERRO NO MAPA:", str(e)) # Dá um print legível no seu terminal do Linux
         return jsonify(erro="Erro ao carregar dados do mapa", detalhe=str(e)), 500

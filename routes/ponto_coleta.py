@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from models.pontos_coleta import Ponto_Coleta
+from models.usuario import Usuario
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from db import db
 
@@ -54,17 +55,20 @@ def criar_ponto_coleta():
         db.session.rollback()
         return jsonify(erro="Erro ao criar Ponto de Coleta", detalhe=str(e)), 500
     
-
 @ponto_coleta_bp.route('/pontos_coleta/<int:id>', methods=['PUT'])
 @jwt_required()
 def atualizar_pontos_coleta(id):
     try:
         usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id) 
+        
         dados = request.get_json()
         ponto = Ponto_Coleta.query.get(id)
         if not ponto:
             return jsonify(mensagem="Ponto de Coleta não encontrado"), 404
-        if ponto.id_usuario != usuario_id:
+            
+        # 🛡️ POLIMENTO DA HIERARQUIA:
+        if ponto.id_usuario != usuario_id and usuario_atual.role != 'admin':
             return jsonify(mensagem="Ação não autorizada"), 403
         
         ponto.nome = dados.get('nome', ponto.nome)
@@ -83,10 +87,14 @@ def atualizar_pontos_coleta(id):
 def deletar_ponto_coleta(id):
     try:
         usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id) 
+        
         ponto = Ponto_Coleta.query.get(id)
         if not ponto:
             return jsonify(mensagem="Ponto de Coleta não encontrado"), 404
-        if ponto.id_usuario != usuario_id:
+            
+        # 🛡️ POLIMENTO DA HIERARQUIA:
+        if ponto.id_usuario != usuario_id and usuario_atual.role != 'admin':
             return jsonify(mensagem="Ação não autorizada"), 403
         
         db.session.delete(ponto)
