@@ -1,4 +1,4 @@
-const API_BASE = 'http://127.0.0.1:5000'; // Define a base da API explicitamente
+const API_BASE = 'https://ecomap-wshs.onrender.com'; // Define a base da API explicitamente
 const API      = '/usuario';
 
 let usuarios = [];

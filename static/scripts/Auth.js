@@ -1,7 +1,7 @@
 class Auth {
     static async login(email, senha) {
         try {
-            const response = await fetch('http://127.0.0.1:5000/auth/login', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, senha })
@@ -14,7 +14,7 @@ class Auth {
 
     static async cadastrar(nome, email, senha) {
         try {
-            const response = await fetch('http://127.0.0.1:5000/usuario', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/usuario', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nome, email, senha })
@@ -27,7 +27,7 @@ class Auth {
 
     static async recuperarSenha(email, recaptchaToken) {
         try {
-            const response = await fetch('http://127.0.0.1:5000/auth/recuperar_senha', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/auth/recuperar_senha', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, 'g-recaptcha-response': recaptchaToken })
@@ -40,7 +40,7 @@ class Auth {
 
     static async redefinirSenha(token, novaSenha) {
         try {
-            const response = await fetch('http://127.0.0.1:5000/auth/redefinir_senha', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/auth/redefinir_senha', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token, nova_senha: novaSenha })

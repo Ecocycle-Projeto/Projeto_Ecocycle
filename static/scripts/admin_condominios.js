@@ -1,6 +1,6 @@
 // static/scripts/admin_condominios.js
 
-const API_BASE = 'http://127.0.0.1:5000';
+const API_BASE = 'https://ecomap-wshs.onrender.com';
 
 // ── Interceptador de Requisições Inteligente ──────────────────
 async function apiFetch(endpoint, options = {}) {
