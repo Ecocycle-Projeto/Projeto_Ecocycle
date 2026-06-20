@@ -2,13 +2,13 @@
 
 const role = localStorage.getItem('role');
 const token = localStorage.getItem('access_token');
+const paginaAtual = window.location.pathname.split('/').pop();
 
-// Redireciona para login se não estiver autenticado
-if (!token) {
-    window.location.href = 'login.html';
+// 1. Redireciona para o login de forma ABSOLUTA caso não esteja autenticado
+if (!token && paginaAtual !== 'login.html') {
+    window.location.href = '/templates/login.html'; // Ajuste aqui para a rota real do seu login no Flask se for '/login'
 }
 
-// Função disponível globalmente em todas as páginas
 function isAdmin() {
     return role === 'admin';
 }
@@ -21,14 +21,18 @@ function isUsuario() {
     return role === 'usuario';
 }
 
+// Controle do menu administrativo
 document.addEventListener('DOMContentLoaded', () => {
     const menuAdmin = document.getElementById('menuAdmin');
-    if (menuAdmin && isAdmin()) {
-        menuAdmin.style.display = 'block';
+    if (menuAdmin) {
+        if (isAdmin()) {
+            menuAdmin.style.display = 'block';
+        } else {
+            menuAdmin.style.display = 'none';
+        }
     }
 });
 
-// Páginas que só admin pode acessar
 const paginasAdmin = [
     'admin_pontos.html',
     'admin_user.html',
@@ -36,9 +40,7 @@ const paginasAdmin = [
     'admin_condominios.html'
 ];
 
-const paginaAtual = window.location.pathname.split('/').pop();
-
 if (paginasAdmin.includes(paginaAtual) && !isAdmin()) {
     alert('Acesso negado. Área restrita para administradores.');
-    window.location.href = 'ecomap.html';
+    window.location.href = '/ecomap.html'; // Redirecionamento absoluto
 }
