@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botaoLogin.textContent = 'Enviando...';
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/auth/recuperar_senha', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/auth/recuperar_senha', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

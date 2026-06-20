@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Aponta explicitamente para o endereço do backend local
-            const response = await fetch('http://127.0.0.1:5000/auth/refresh', {
+            const response = await fetch('https://ecomap-wshs.onrender.com/auth/refresh', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${refreshToken}`
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let token = localStorage.getItem('access_token');
         
         // Mapeia a URL para o servidor local se for uma rota relativa
-        const urlCompleta = url.startsWith('http') ? url : `http://127.0.0.1:5000${url}`;
+        const urlCompleta = url.startsWith('http') ? url : `https://ecomap-wshs.onrender.com${url}`;
         
         configuracao.headers = configuracao.headers || {};
         if (token) {

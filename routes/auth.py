@@ -89,7 +89,7 @@ def solicitar_recuperacao():
         # 4. Gera o token e envia a mensagem
         serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
         token = serializer.dumps(email, salt='recuperacao-de-senha')
-        link_recuperacao = f"http://127.0.0.1:5000/redefinir_senha.html?token={token}"
+        link_recuperacao = f"https://ecomap-wshs.onrender.com/redefinir_senha.html?token={token}"
 
         if enviar_email_recuperacao(email, link_recuperacao):
             return jsonify(mensagem="Se o e-mail estiver cadastrado, um link de recuperação foi enviado."), 200

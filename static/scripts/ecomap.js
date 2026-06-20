@@ -23,7 +23,7 @@ async function apiFetch(url, options = {}) {
             return;
         }
 
-        const resRefresh = await fetch('http://127.0.0.1:5000/auth/refresh', {
+        const resRefresh = await fetch('https://ecomap-wshs.onrender.com/auth/refresh', {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${refreshToken}` }
         });
@@ -392,7 +392,7 @@ async function salvarEdicaoNoServidor(id) {
     };
 
     try {
-       const response = await apiFetch(`http://127.0.0.1:5000/pontos_coleta/${id}`, {
+       const response = await apiFetch(`https://ecomap-wshs.onrender.com/pontos_coleta/${id}`, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
@@ -430,7 +430,7 @@ window.salvarPontoNoServidor = async function() {
     }
 
     try {
-       const response = await apiFetch(`http://127.0.0.1:5000/pontos_coleta`,{
+       const response = await apiFetch(`https://ecomap-wshs.onrender.com/pontos_coleta`,{
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -473,7 +473,7 @@ window.salvarEmpresaNoServidor = async function() {
     }
 
     try {
-        const response = await apiFetch('http://127.0.0.1:5000/empresas', {
+        const response = await apiFetch('https://ecomap-wshs.onrender.com/empresas', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -515,7 +515,7 @@ window.salvarCondominioNoServidor = async function() {
     }
 
     try {
-        const response = await apiFetch('http://127.0.0.1:5000/condominios', {
+        const response = await apiFetch('https://ecomap-wshs.onrender.com/condominios', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -544,7 +544,7 @@ window.deletarPonto = async function(id) {
 
     const token = localStorage.getItem('access_token');
     try {
-        const response = await apiFetch(`http://127.0.0.1:5000/pontos_coleta/${id}`, {
+        const response = await apiFetch(`https://ecomap-wshs.onrender.com/pontos_coleta/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -566,7 +566,7 @@ window.deletarEmpresa = async function(id) {
 
     const token = localStorage.getItem('access_token');
     try {
-        const response = await apiFetch(`http://127.0.0.1:5000/empresas/${id}`, {
+        const response = await apiFetch(`https://ecomap-wshs.onrender.com/empresas/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -588,7 +588,7 @@ window.deletarCondominio = async function(id) {
 
     const token = localStorage.getItem('access_token');
     try {
-        const response = await apiFetch(`http://127.0.0.1:5000/condominios/${id}`, {
+        const response = await apiFetch(`https://ecomap-wshs.onrender.com/condominios/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -618,7 +618,7 @@ function atualizarPainelProximos() {
 // 10. Carregamento dos Pontos Existentes
 async function carregarPontos() {
     try {
-        const response = await apiFetch('http://127.0.0.1:5000/mapa');
+        const response = await apiFetch('https://ecomap-wshs.onrender.com/mapa');
         if (!response.ok) return;
 
         const data = await response.json();
@@ -793,8 +793,8 @@ let favoritosDoUsuario = new Set(); // ids dos serviços já favoritados
 async function carregarServicos() {
     try {
         const [resServicos, resFavoritos] = await Promise.all([
-            apiFetch('http://127.0.0.1:5000/servicos'),
-            apiFetch('http://127.0.0.1:5000/favoritos').catch(() => ({ ok: false }))
+            apiFetch('https://ecomap-wshs.onrender.com/servicos'),
+            apiFetch('https://ecomap-wshs.onrender.com/favoritos').catch(() => ({ ok: false }))
         ]);
 
         const dataServicos  = await resServicos.json();
@@ -975,7 +975,7 @@ function renderizarCards(secaoClasse, servicos) {
 async function toggleFavorito(idServico) {
     try {
         const estaFavoritado = favoritosDoUsuario.has(idServico);
-        const url = `http://127.0.0.1:5000/favoritos/${idServico}`;
+        const url = `https://ecomap-wshs.onrender.com/favoritos/${idServico}`;
         const metodo = estaFavoritado ? 'DELETE' : 'POST';
 
         const resposta = await apiFetch(url, {
@@ -1119,7 +1119,7 @@ window.salvarServicoNoServidor = async function() {
 
     try {
         // Dispara para a rota que criamos no início
-        const response = await apiFetch('http://127.0.0.1:5000/servicos', {
+        const response = await apiFetch('https://ecomap-wshs.onrender.com/servicos', {
             method: 'POST',
             body: JSON.stringify(dados)
         });
