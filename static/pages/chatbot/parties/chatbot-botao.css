@@ -1,0 +1,45 @@
+@import '../../../css/global/variables.css';
+
+#chatbotBotaoAbrir {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: var(--Cor-verde);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#chatbotBotaoAbrir:hover {
+    background-color: var(--Cor-verde-escuro);
+    transform: scale(1.06);
+}
+
+#chatbotBotaoAbrir svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+
+#chatbotBotaoAbrir.aberto svg {
+    display: none;
+}
+
+#chatbotBotaoAbrir .icone-fechar {
+    display: none;
+    font-size: 26px;
+    color: #fff;
+    line-height: 1;
+}
+
+#chatbotBotaoAbrir.aberto .icone-fechar {
+    display: block;
+}

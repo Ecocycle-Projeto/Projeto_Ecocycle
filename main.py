@@ -18,6 +18,7 @@ from routes.servicos import servico_bp
 from routes.condominio import condominio_bp
 from routes.mapa import mapa_bp
 from routes.favorito import favorito_bp
+from routes.chatbot import chatbot_bp
 
 # Carregar variáveis do .env
 load_dotenv()
@@ -46,6 +47,7 @@ app.register_blueprint(servico_bp)
 app.register_blueprint(condominio_bp)
 app.register_blueprint(mapa_bp)
 app.register_blueprint(favorito_bp)
+app.register_blueprint(chatbot_bp)
 # Arquivo principal
 if __name__ == '__main__':
     app.run(debug=True)

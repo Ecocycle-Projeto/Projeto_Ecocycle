@@ -8,6 +8,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
     <title>|-Ecomap</title>
 </head>
+
+<!-- ═══ WIDGET CHATBOT ECOMAP ═══ -->
+<link rel="stylesheet" href="../static/pages/chatbot/chatbot.css">
+
+<button id="chatbotBotaoAbrir" title="Assistente EcoMap">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37
+                 C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z
+                 M8 11h8v2H8zm0-3h8v2H8z"/>
+    </svg>
+    <span class="icone-fechar">✕</span>
+</button>
+
+<div id="chatbotJanela">
+    <div class="chatbot-header">
+        <div class="chatbot-icone-bot">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37
+                         C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z
+                         M8 11h8v2H8zm0-3h8v2H8z"/>
+            </svg>
+        </div>
+        <div>
+            <strong>Assistente EcoMap</strong>
+            <span>Reciclagem e dúvidas da plataforma</span>
+        </div>
+    </div>
+
+    <div class="chatbot-corpo" id="chatbotCorpo"></div>
+
+    <form class="chatbot-footer" id="chatbotForm">
+        <input type="text" id="chatbotInput" placeholder="Digite sua pergunta..." autocomplete="off">
+        <button type="submit" title="Enviar">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+            </svg>
+        </button>
+    </form>
+</div>
+
+<script src="../static/scripts/chatbot.js"></script>
+
 <body>
     <header class="header-ecomap">
         <img class="img-header-ecomap" src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="">
