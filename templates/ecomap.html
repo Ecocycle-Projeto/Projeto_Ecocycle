@@ -54,9 +54,6 @@
     <header class="header-ecomap">
         <img class="img-header-ecomap" src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="">
     </header>
-    <button id="btn-logout" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: #e74c3c; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
-    Sair / Logout
-    </button>
    <menu class="menu-ecomap">
     <ul>
         <li><a class="btn-home-destaque" href="http://127.0.0.1:5000/">HOME</a></li>
@@ -71,7 +68,12 @@
         </ul>
     </li>
 
-        <li><a href="#">PERFIL</a></li>
+        <li class="menu-parceiro" id="menuPerfil">
+            <a href="#" id="btnMenuPerfil">PERFIL ▾</a>
+            <ul class="dropdown-parceiro" id="dropdownPerfil">
+                <li><a href="#" id="btn-logout-dropdown">🚪 Sair / Logout</a></li>
+            </ul>
+        </li>
 
         <li class="menu-admin" id="menuAdmin" style="display:none;">
             <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>

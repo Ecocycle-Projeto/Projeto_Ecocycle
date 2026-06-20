@@ -23,25 +23,29 @@ a pessoa já entende o tema. Evite respostas técnicas demais.
 ==================================================
 BASE DE CONHECIMENTO DA PLATAFORMA ECOMAP
 ==================================================
-- Criar conta: clique em "Cadastrar" no menu superior, preencha nome, e-mail e
-  senha e aceite os termos de uso.
+- Criar conta: clique em "Cadastrar" no menu superior, preencha nome, e-mail e senha e aceite os termos de uso.
 - Login: use o botão "Entrar" no menu superior com seu e-mail e senha cadastrados.
-- Mapa de pontos de coleta: na página inicial (HOME) há um mapa interativo
-  mostrando os ecopontos próximos, com endereço, horário de funcionamento e
-  materiais aceitos em cada um.
-- Buscar um ponto: use o campo de busca acima do mapa para encontrar ecopontos
-  por nome ou endereço.
-- Favoritar serviços: é possível marcar pontos de coleta como favoritos
-  clicando no ícone de estrela, para acessá-los rapidamente depois.
-- Perfil do usuário: na página "Perfil" o usuário pode ver e editar seus dados
-  cadastrais.
-- Serviços: a seção "Serviços" mostra parceiros e iniciativas relacionadas à
-  coleta seletiva e reciclagem.
-- Contato: a página "Contato" possui um formulário para enviar dúvidas,
-  sugestões ou denunciar um ponto de coleta com informação incorreta.
-- Cadastro de novos pontos de coleta: usuários autenticados podem sugerir
-  novos ecopontos preenchendo nome, endereço, horário de funcionamento e os
-  tipos de materiais aceitos.
+- Mapa de pontos de coleta: na página inicial (ECOMAP) há um mapa interativo mostrando os ecopontos próximos, com endereço, horário de funcionamento e materiais aceitos em cada um.
+- Buscar um ponto: use o campo de busca acima do mapa para encontrar ecopontos por nome ou endereço.
+- Favoritar serviços: é possível marcar pontos de coleta como favoritos clicando no ícone de estrela, para acessá-los rapidamente depois.
+- Perfil do usuário: na página "Perfil" o usuário pode ver e editar seus dados cadastrais.
+- Contato: a página "Contato" possui um formulário para enviar dúvidas, sugestões ou denunciar um ponto de coleta com informação incorreta.
+
+- Como cadastrar um Ponto de Coleta no mapa:
+  O usuário logado deve ir até o mapa na página inicial, encontrar o local exato onde o ponto fica e CLICAR diretamente no mapa. Um pop-up de "Confirmar Local" vai aparecer na tela. Ao clicar em confirmar, um modal (janela) se abrirá com os campos para preencher os dados do ponto (nome, endereço, horário e materiais aceitos).
+
+- Menu "Quer ser Parceiro?" (Dropdown na Barra de Navegação):
+  Ao clicar em "QUER SER PARCEIRO ▾", um menu de opções vai se abrir com três opções:
+  1. 🏭 Cadastre sua Empresa
+  2. 🏢 Cadastre seu Condomínio
+  3. 🛠️ Cadastrar Novo Serviço
+
+- Como cadastrar Empresa, Condomínio ou Serviço:
+  Ao clicar em qualquer uma das opções do menu "Quer ser Parceiro", o sistema ativará o "Modo de Cadastro" daquela entidade específica (Modo Empresa ou Modo Condomínio). 
+  Com o modo ativo, o processo é o mesmo do ponto de coleta: o usuário deve ir até o mapa, CLICAR no local exato onde a empresa ou condomínio fica, clicar no pop-up "Confirmar Local" e preencher o formulário que se abrirá no modal.
+
+- Regra Obrigatória para Cadastro de Serviços:
+  Para conseguir cadastrar um Novo Serviço, o usuário precisa OBRIGATORIAMENTE já ter uma Empresa cadastrada e associada ao perfil dele no sistema.
 
 ==================================================
 CONCEITOS BÁSICOS DE RECICLAGEM (para iniciantes)

@@ -1175,7 +1175,9 @@ window.fecharModalServico = function() {
 
 carregarServicos();
 
-document.getElementById('btn-logout').addEventListener('click', () => {
+
+document.getElementById('btn-logout-dropdown').addEventListener('click', (e) => {
+    e.preventDefault(); // Impede a página de recarregar ou tentar seguir o '#' do link
     localStorage.clear(); 
     window.location.href = 'login.html'; 
 });
