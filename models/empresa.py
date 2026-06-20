@@ -15,12 +15,15 @@ class Empresa(db.Model):
     latitude  = db.Column(db.Numeric(precision=9, scale=6), nullable=True)
     longitude = db.Column(db.Numeric(precision=9, scale=6), nullable=True)
 
+
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id', ondelete='CASCADE'), nullable=True)
+
  
     pontos_coleta = db.relationship('Ponto_Coleta', backref='empresa', lazy=True)
     servicos      = db.relationship('Servico', secondary='empresa_servico', back_populates='empresas', lazy=True)
 
     
-    def __init__(self, nome, cnpj, email, telefone=None, descricao=None, ativa=True, latitude=None, longitude=None):
+    def __init__(self, nome, cnpj, email, telefone=None, descricao=None, ativa=True, latitude=None, longitude=None, id_usuario=None):
         self.nome      = nome
         self.cnpj      = cnpj
         self.email     = email
@@ -29,6 +32,7 @@ class Empresa(db.Model):
         self.ativa     = ativa
         self.latitude  = latitude
         self.longitude = longitude
+        self.id_usuario = id_usuario
 
     def to_dict(self):
         return {
@@ -41,4 +45,5 @@ class Empresa(db.Model):
             'ativa':     self.ativa,
             'latitude':  float(self.latitude)  if self.latitude  else None,
             'longitude': float(self.longitude) if self.longitude else None,
+            'id_usuario': self.id_usuario
         }

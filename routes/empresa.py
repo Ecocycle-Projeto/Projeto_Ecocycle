@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
 from models.empresa import Empresa
-from flask_jwt_extended import jwt_required
+from models.usuario import Usuario  
+from flask_jwt_extended import jwt_required, get_jwt_identity 
 from db import db
-
 
 empresa_bp = Blueprint('empresa', __name__)
 
@@ -27,23 +27,23 @@ def get_empresa(id):
 @jwt_required()
 def criar_empresa():
     try:
+        usuario_id = int(get_jwt_identity()) 
         dados = request.get_json()
 
-        # Verifica se CNPJ ou email já existem
         if Empresa.query.filter_by(cnpj=dados['cnpj']).first():
             return jsonify(mensagem="CNPJ já cadastrado"), 409
         if Empresa.query.filter_by(email=dados['email']).first():
             return jsonify(mensagem="Email já cadastrado"), 409
 
-        # CORREÇÃO AQUI: Passando as coordenadas recebidas do JSON para o construtor
         nova_empresa = Empresa(
             nome=dados['nome'],
             cnpj=dados['cnpj'],
             email=dados['email'],
             telefone=dados.get('telefone'),
             descricao=dados.get('descricao'),
-            latitude=dados.get('latitude'),    # 👈 Captura do JSON
-            longitude=dados.get('longitude')   # 👈 Captura do JSON
+            latitude=dados.get('latitude'),
+            longitude=dados.get('longitude'),
+            id_usuario=usuario_id 
         )
         db.session.add(nova_empresa)
         db.session.commit()
@@ -54,36 +54,46 @@ def criar_empresa():
     
 @empresa_bp.route('/empresas/<int:id>', methods=['PUT'])
 @jwt_required()
-def atualizar_empresa(id):
+def atualizar_empresa(id): 
     try:
+        usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id)
+
         dados = request.get_json()
         empresa = Empresa.query.get(id)
         if not empresa:
             return jsonify(mensagem="Empresa não encontrada"), 404
+
+        if empresa.id_usuario != usuario_id and usuario_atual.role != 'admin':
+            return jsonify(mensagem="Ação não autorizada"), 403
 
         empresa.nome      = dados.get('nome',      empresa.nome)
         empresa.email     = dados.get('email',     empresa.email)
         empresa.telefone  = dados.get('telefone',  empresa.telefone)
         empresa.descricao = dados.get('descricao', empresa.descricao)
         empresa.ativa     = dados.get('ativa',     empresa.ativa)
-        
-        # CORREÇÃO AQUI: Atualiza as coordenadas se vierem no JSON, senão mantém as atuais
         empresa.latitude  = dados.get('latitude',  empresa.latitude)
         empresa.longitude = dados.get('longitude', empresa.longitude)
 
         db.session.commit()
-        return jsonify(mensagem="Empresa atualizada com sucesso!", empresa=empresa.to_dict()), 200
+        return jsonify(mensagem="Empresa updated com sucesso!", empresa=empresa.to_dict()), 200
     except Exception as e:
         db.session.rollback()
         return jsonify(erro="Erro ao atualizar empresa", detalhe=str(e)), 500
 
 @empresa_bp.route('/empresas/<int:id>', methods=['DELETE'])
 @jwt_required()
-def deletar_empresa(id):
+def deletar_empresa(id): 
     try:
+        usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id) 
+
         empresa = Empresa.query.get(id)
         if not empresa:
             return jsonify(mensagem="Empresa não encontrada"), 404
+
+        if empresa.id_usuario != usuario_id and usuario_atual.role != 'admin':
+            return jsonify(mensagem="Ação não autorizada"), 403
 
         db.session.delete(empresa)
         db.session.commit()

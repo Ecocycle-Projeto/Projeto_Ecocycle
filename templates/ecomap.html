@@ -57,25 +57,34 @@
     <button id="btn-logout" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: #e74c3c; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
     Sair / Logout
     </button>
-    <menu class="menu-ecomap">
-        <ul>
-            <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
-            <li><a href="#">SERVIÇOS</a></li>
-            <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
-            <li><a href="#">CONTATO</a></li>
-            <li><a href="#">PERFIL</a></li>
+   <menu class="menu-ecomap">
+    <ul>
+        <li><a class="btn-home-destaque" href="http://127.0.0.1:5000/">HOME</a></li>
+        <li><a href="http://127.0.0.1:5000/servicos.html">SERVIÇOS</a></li>
+        <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
 
-            <li class="menu-admin" id="menuAdmin" style="display:none;">
-            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
-                <ul class="dropdown-admin" id="dropdownAdmin">
-                    <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
-                    <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
-                    <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
-                    <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
-                </ul>
-            </li>
+     <li class="menu-parceiro" id="menuParceiro">
+        <a href="#" id="btnMenuParceiro">QUER SER PARCEIRO? ▾</a>
+        <ul class="dropdown-parceiro" id="dropdownParceiro">
+            <li><a href="#" onclick="ativarModoCadastroEmpresa()">🏭 Cadastre sua Empresa</a></li>
+            <li><a href="#" onclick="ativarModoCadastroCondominio()">🏢 Cadastre seu Condomínio</a></li>
+            <li><a href="#" onclick="prepararFormularioServico()">🛠️ Cadastrar Novo Serviço</a></li>
         </ul>
-    </menu>
+    </li>
+
+        <li><a href="#">PERFIL</a></li>
+
+        <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+            <ul class="dropdown-admin" id="dropdownAdmin">
+                <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+            </ul>
+        </li>
+    </ul>
+</menu>
     <h1 class="titulo-ecomap">ECOMAP</h1>
     <section class="mapa">
         <input id="pesquisa" class="input-ecomap" type="text" placeholder="Buscar ponto de coleta...">
@@ -89,92 +98,45 @@
         </aside>
     </section>
     <section class="servico-em-destaque">
-        <div class="pai-cards">
-            <h1>Serviços em Destaque</h1>
+    <div class="pai-cards">
+        <h1>Serviços em Destaque</h1>
+    </div>
+    <div class="caixa-cards">
+        <div class="card">
+            <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
+            <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
+            <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
+            <img class="imagem-card" src="" alt="">
+            <h2 class="titulo-servico"></h2>
+            <p class="descricao-servico"></p>
+            <p class="status"></p>
+            <p class="distancia"></p>
+            <p class="impacto"></p>
+            <button class="botao-card"></button>
         </div>
-        <div class="caixa-cards">
-            <div class="card">
-                <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
-                <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
-                <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-            <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-            <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-        </div>
-    </section>
-    <section class="servico-favoritados">
-        <div class="pai-cards">
-            <h1>Serviços Favoritados</h1>
-        </div>
-        <div class="caixa-cards">
-            <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-            <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-            <div class="card">
-                <div class="icone-agenda"><img src="" alt=""></div>
-                <div class="icone-mapa"><img src="" alt=""><button></button></div>
-                <div class="estrela"><img src="" alt=""></div>
-                <img class="imagem-card" src="" alt="">
-                <h2 class="titulo-servico"></h2>
-                <p class="descricao-servico"></p>
-                <p class="status"></p>
-                <p class="distancia"></p>
-                <p class="impacto"></p>
-                <button class="botao-card"></button>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
+<section class="servico-favoritados">
+    <div class="pai-cards">
+        <h1>Serviços Favoritados</h1>
+    </div>
+    <div class="caixa-cards">
+        <div class="card">
+            <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
+            <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
+            <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
+            <img class="imagem-card" src="" alt="">
+            <h2 class="titulo-servico"></h2>
+            <p class="descricao-servico"></p>
+            <p class="status"></p>
+            <p class="distancia"></p>
+            <p class="impacto"></p>
+            <button class="botao-card"></button>
+        </div>
+    </div>
+</section>
+    
     <div id="modal-cadastro" class="modal-container">
     <div class="modal-content">
         <span class="close-modal" onclick="fecharModal()">&times;</span>

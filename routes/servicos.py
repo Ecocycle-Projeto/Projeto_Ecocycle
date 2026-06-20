@@ -3,7 +3,8 @@
 from flask import Blueprint, jsonify, request
 from models.servicos import Servico
 from models.empresa import Empresa
-from flask_jwt_extended import jwt_required
+from models.usuario import Usuario
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from db import db
 
 servico_bp = Blueprint("Servico", __name__)
@@ -29,6 +30,8 @@ def get_servico(id):
 @jwt_required()
 def criar_servico():
     try:
+        usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id)
         dados = request.get_json()
 
         novo_servico = Servico(
@@ -36,11 +39,23 @@ def criar_servico():
             descricao=dados.get('descricao')
         )
 
-        # Vincula empresas se vier uma lista de ids
+        # SE O FRONTEND ENVIAR IDS (Para compatibilidade geral)
         ids_empresas = dados.get('ids_empresas', [])
+        
         if ids_empresas:
-            empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas)).all()
+            if usuario_atual.role == 'admin':
+                empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas)).all()
+            else:
+                empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas), Empresa.id_usuario == usuario_id).all()
+                if len(empresas) != len(ids_empresas):
+                    return jsonify(mensagem="Ação não autorizada. Uma ou mais empresas fornecidas não pertencem a você."), 403
             novo_servico.empresas = empresas
+            
+        else:
+            # CORREÇÃO: Se não vierem IDs no JSON, busca AUTOMATICAMENTE as empresas do usuário logado!
+            if usuario_atual.role != 'admin':
+                empresas_automaticas = Empresa.query.filter_by(id_usuario=usuario_id).all()
+                novo_servico.empresas = empresas_automaticas
 
         db.session.add(novo_servico)
         db.session.commit()
@@ -48,12 +63,16 @@ def criar_servico():
     except Exception as e:
         db.session.rollback()
         return jsonify(erro="Erro ao criar serviço", detalhe=str(e)), 500
+    
 
 @servico_bp.route('/servicos/<int:id>', methods=['PUT'])
 @jwt_required()
 def atualizar_servico(id):
     try:
+        usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id)
         dados = request.get_json()
+        
         servico = Servico.query.get(id)
         if not servico:
             return jsonify(mensagem="Serviço não encontrado"), 404
@@ -62,14 +81,20 @@ def atualizar_servico(id):
         servico.descricao = dados.get('descricao', servico.descricao)
         servico.ativo     = dados.get('ativo',     servico.ativo)
 
-        # Atualiza empresas vinculadas se vier nova lista
         ids_empresas = dados.get('ids_empresas')
         if ids_empresas is not None:
-            empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas)).all()
+
+            if usuario_atual.role == 'admin':
+                empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas)).all()
+            else:
+                empresas = Empresa.query.filter(Empresa.id.in_(ids_empresas), Empresa.id_usuario == usuario_id).all()
+                if len(empresas) != len(ids_empresas):
+                    return jsonify(mensagem="Ação não autorizada. Uma ou mais empresas fornecidas não pertencem a você."), 403
+            
             servico.empresas = empresas
 
         db.session.commit()
-        return jsonify(mensagem="Serviço atualizado com sucesso!", servico=servico.to_dict()), 200
+        return jsonify(mensagem="Serviço updated com sucesso!", servico=servico.to_dict()), 200
     except Exception as e:
         db.session.rollback()
         return jsonify(erro="Erro ao atualizar serviço", detalhe=str(e)), 500
@@ -78,9 +103,16 @@ def atualizar_servico(id):
 @jwt_required()
 def deletar_servico(id):
     try:
+        usuario_id = int(get_jwt_identity())
+        usuario_atual = Usuario.query.get(usuario_id)
+        
         servico = Servico.query.get(id)
         if not servico:
             return jsonify(mensagem="Serviço não encontrado"), 404
+
+        se_empresas_de_outros = [e for e in servico.empresas if e.id_usuario != usuario_id]
+        if se_empresas_de_outros and usuario_atual.role != 'admin':
+            return jsonify(mensagem="Ação não autorizada. Este serviço está associado a empresas de outros usuários."), 403
 
         db.session.delete(servico)
         db.session.commit()
