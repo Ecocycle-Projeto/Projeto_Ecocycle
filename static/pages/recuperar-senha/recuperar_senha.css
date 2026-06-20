@@ -1,0 +1,12 @@
+@import '../login/parties/formulario-login.css';
+@import '../login/parties/imagem-login.css';
+@import '../login/parties/texto-formulario.css';
+@import '../login/parties/input-formulario.css';
+@import '../login/parties/botao-login.css';
+@import '../login/parties/i-email.css';
+@import '../../css/global/variables.css';
+@import '../../css/global/normalizer.css';
+
+html {
+    background-color: var(--Cor-fundo);
+}

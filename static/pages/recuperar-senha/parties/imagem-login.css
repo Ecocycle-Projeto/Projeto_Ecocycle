@@ -1,0 +1,25 @@
+.imagem-login {
+    
+    width: 70px;
+    height: 70px; 
+    
+    align-self: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-bottom: 10px;
+}
+
+.imagem-login img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Garante que a imagem não fique esticada */
+}
+
+.imagem-login h1 {
+    font-size: 20px;
+    color: white;
+    margin: 0;
+}

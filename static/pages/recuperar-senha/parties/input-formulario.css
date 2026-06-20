@@ -1,0 +1,32 @@
+@import '../../../css/global/variables.css';
+
+.input-formulario {
+    /* Cores e Estilo */
+    background-color: var(--Cor-cinza);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    
+    /* Dimensões Robustas */
+    height: 45px; 
+    width: 400px; 
+    max-width: 100%; 
+    min-width: 280px; 
+    
+    /* Espaçamento */
+    padding: 0 16px; 
+    margin-top: 10px;
+    
+    /* Tipografia e Performance */
+    font-size: 16px;
+    box-sizing: border-box; 
+    transition: background-color 0.3s, border-bottom 0.2s;
+}
+
+
+.input-formulario:focus {
+    background-color: #3a3a3a;
+    border-bottom: 2px solid var(--Cor-verde);
+}
+

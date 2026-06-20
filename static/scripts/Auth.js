@@ -24,4 +24,30 @@ class Auth {
             return { success: false, message: "Erro na conexão com o servidor" };
         }
     }
+
+    static async recuperarSenha(email, recaptchaToken) {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/auth/recuperar_senha', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, 'g-recaptcha-response': recaptchaToken })
+            });
+            return await response.json();
+        } catch (error) {
+            return { success: false, message: "Erro na conexão com o servidor" };
+        }
+    }
+
+    static async redefinirSenha(token, novaSenha) {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/auth/redefinir_senha', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token, nova_senha: novaSenha })
+            });
+            return await response.json();
+        } catch (error) {
+            return { success: false, message: "Erro na conexão com o servidor" };
+        }
+    }
 }
