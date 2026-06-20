@@ -1,0 +1,15 @@
+@import './parties/formulario-login.css';
+@import './parties/imagem-login.css';
+@import './parties/texto-formulario.css';
+@import './parties/input-formulario.css';
+@import './parties/botao-login.css';
+@import './parties/checkbox-formulario.css';
+@import './parties/i-email.css';
+@import './parties/i-senha.css';
+@import '../../css/global/variables.css';
+@import '../../css/global/normalizer.css';
+
+
+html {
+    background-color: var(--Cor-fundo);
+}

@@ -1,0 +1,32 @@
+@import './parties/header-ecomap.css';
+@import './parties/menu-ecomap.css';
+@import './parties/modal-cadastro.css';
+@import './parties/img-header-ecomap.css';
+@import './parties/botao-ecomap.css';
+@import './parties/pai-botoes-mapa.css';
+@import './parties/mapa.css';
+@import './parties/pai-input-ecomap.css';
+@import './parties/input-ecomap.css';
+@import './parties/i-ecomap-pesquisa.css';
+@import './parties/icone-botao.css';
+@import './parties/titulo-ecomap.css';
+@import './parties/servico-em-destaque.css';
+@import './parties/pai-cards.css';
+@import './parties/cards.css';
+@import '../../css/global/normalizer.css';
+@import '../../css/global/variables.css';
+
+
+html {
+    background-color: var(--Cor-fundo);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #fff;
+    display: flex;
+    position: relative;
+    left: 100px;
+    width: 50px;
+}

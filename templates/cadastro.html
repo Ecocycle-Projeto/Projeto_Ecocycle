@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/scripts/Auth.js"></script>
+    <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
+    <link rel="stylesheet" href="../static/pages/cadastro/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <form class="formulario-cadastro">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <img class="img-cadastro" src="../static/imagens/recycle-icon-93a07e 1.png" alt="">
+        <h1>Eco Cycle</h1>
+        <p>Registre-se e comece a usar!</p>
+        <br>
+        <label for="name">Nome</label>
+        <input id="name" class="input-cadastro" placeholder="Nome de Usuário" type="text" required>
+        
+        <label for="email">Endereço de Email</label>
+        <input id="email" class="input-cadastro"  placeholder="joãopaulo55@gmail.com" type="email" required>
+        
+        <label for="password">Senha</label>
+        <input id="password" class="input-cadastro" placeholder="****************" type="password" required>
+
+        <div class="termos">
+            <input type="checkbox" name="termos_uso" id="termos" required>
+            <label for="termos">
+                 Li e aceito os <a href="javascript:void(0)" id="abrirModal">Termos de uso</a>
+            </label>
+        </div>
+        <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_SITE_KEY'] }}"></div>
+        
+        <button class="botao-cadastro" type="submit">Registrar-se agora</button>
+    </form>
+
+    <div id="modalTermos" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <h2>Termos de Uso - Ecomap</h2>
+           <div class="texto-termos">
+                     <section>
+                        <h3>1. Introdução</h3>
+                        <p>O EcoMap é uma plataforma digital desenvolvida no âmbito do projeto Ecocycle...</p>
+                    </section>
+
+                    <section>
+                        <h3>2. Controlador de Dados</h3>
+                        <p>O EcoMap atua como Controlador dos dados pessoais, sendo responsável pelas decisões referentes ao tratamento...</p>
+                    </section>
+
+                    <section>
+                        <h3>3. Cadastro e Conta de Usuário</h3>
+                        <ul>
+                            <li><strong>Dados de cadastro:</strong> Nome, e-mail e senha.</li>
+                            <li><strong>Responsabilidades:</strong> Fornecer informações verdadeiras e manter a confidencialidade das credenciais.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                            <h3>4. Funcionalidades da Plataforma</h3>
+                            <p>O EcoMap permite ao usuário visualizar pontos de coleta em um mapa interativo, cadastrar novos pontos, editar informações e interagir com dados de reciclagem.</p>
+                    </section>
+
+                    <section>
+                        <h3>5. Obrigações e Condutas Proibidas</h3>
+                        <p>É terminantemente proibido inserir informações falsas, utilizar a plataforma para fins ilícitos ou tentar comprometer a segurança do sistema. O descumprimento pode resultar na exclusão da conta.</p>
+                    </section>
+
+                    <section>
+                        <h3>6. Dados Coletados</h3>
+                        <ul>
+                            <li><strong>Fornecidos:</strong> Nome, e-mail e informações de pontos de coleta.</li>
+                            <li><strong>Automáticos:</strong> Endereço IP, localização (com permissão), tipo de dispositivo e navegador.</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>7. Finalidade do Tratamento de Dados</h3>
+                        <p>Os dados pessoais são tratados para autenticação, operação da plataforma georreferenciada, melhoria da experiência do usuário e cumprimento de obrigações legais.</p>
+                    </section>
+
+                    <section>
+                        <h3>8. Base Legal (LGPD)</h3>
+                        <p>O tratamento fundamenta-se na execução de contrato (uso da plataforma), consentimento do titular, legítimo interesse e obrigações regulatórias.</p>
+                    </section>
+
+                    <section>
+                        <h3>9. Compartilhamento de Dados</h3>
+                        <p>O EcoMap <strong>não comercializa dados</strong>. O compartilhamento ocorre apenas com provedores de infraestrutura essenciais ou por ordem judicial.</p>
+                    </section>
+
+                    <section>
+                        <h3>10. Armazenamento e Segurança</h3>
+                        <p>Adotamos medidas técnicas para proteger dados contra acessos não autorizados. Embora busquemos a segurança máxima, o risco inerente ao ambiente digital deve ser reconhecido.</p>
+                    </section>
+
+                    <section>
+                        <h3>11. Retenção de Dados</h3>
+                        <p>Os dados permanecem armazenados pelo tempo necessário para cumprir as finalidades descritas ou obrigações legais, podendo ser anonimizados após esse período.</p>
+                    </section>
+
+                    <section>
+                        <h3>12. Direitos do Titular de Dados</h3>
+                        <ul>
+                            <li>Confirmar a existência de tratamento e acessar seus dados;</li>
+                            <li>Corrigir informações incompletas ou inexatas;</li>
+                            <li>Solicitar a anonimização, bloqueio ou eliminação;</li>
+                            <li>Revogar o consentimento a qualquer momento.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>13. Cookies e Monitoramento</h3>
+                        <p>Utilizamos cookies para garantir o funcionamento e analisar o desempenho. Você pode gerenciar essas permissões diretamente no seu navegador.</p>
+                    </section>
+
+                    <section>
+                        <h3>14. Conteúdo Gerado pelo Usuário</h3>
+                        <p>Ao cadastrar informações, você autoriza a utilização pública dos dados inseridos, sendo integralmente responsável pela veracidade deles.</p>
+                    </section>
+
+                    <section>
+                        <h3>15. Limitação de Responsabilidade</h3>
+                        <p>O EcoMap não garante a exatidão integral de dados inseridos por terceiros nem a disponibilidade ininterrupta da plataforma.</p>
+                    </section>
+
+                    <section>
+                        <h3>16. Suspensão e Encerramento</h3>
+                        <p>Contas que violem estes termos podem ser suspensas. O usuário também possui o direito de solicitar a exclusão de sua conta quando desejar.</p>
+                    </section>
+
+                    <section>
+                        <h3>17. Alterações deste Documento</h3>
+                        <p>Este documento pode ser atualizado. Recomendamos a revisão periódica para ciência de novas práticas de privacidade.</p>
+                    </section>
+
+                    <section>
+                        <h3>18. Contato</h3>
+                        <p>Para dúvidas ou exercício de direitos, utilize os canais oficiais disponibilizados na plataforma.</p>
+                    </section>
+
+                    <section>
+                        <h3>19. Legislação e Foro</h3>
+                        <p>Este documento é regido pela legislação brasileira, sendo eleito o foro do domicílio do usuário para resolver controvérsias.</p>
+                    </section>
+
+                    <section>
+                        <h3>20. Direitos do Titular de Dados</h3>
+                        <p>Conforme a LGPD, você tem direito a confirmar o tratamento, acessar, corrigir ou solicitar a exclusão de seus dados a qualquer momento.</p>
+                    </section>
+
+                    <div class="assinatura-modal">
+                        <p><strong>Última atualização:</strong> Maio de 2026</p>
+                    </div>
+                
+    <!-- Continue com as outras seções seguindo esse padrão -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/scripts/cadastro.js"></script>
+</body>
+</html>

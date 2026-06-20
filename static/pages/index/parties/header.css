@@ -1,0 +1,17 @@
+@import '../../../css/global/variables.css';
+
+header {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o logo/links dentro do header */
+    justify-content: space-between; /* Distribui os itens (ex: logo de um lado, menu do outro) */
+    
+    background-color: var(--Cor-fundo);
+    width: 70vw;
+    min-height: 10vh; /* min-height é mais seguro para telas pequenas */
+    
+    margin: 0 auto 10px auto; /* Centraliza o container na tela horizontalmente */
+    padding: 0 2rem; /* Adiciona um respiro nas laterais para o conteúdo não colar na borda */
+    
+    border-bottom: 5px solid var(--Cor-verde);
+    box-sizing: border-box; 
+}

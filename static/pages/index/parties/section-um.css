@@ -1,0 +1,43 @@
+
+.section-um {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0; 
+}
+
+.section-um ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center; 
+    gap: 30px; 
+}
+
+.section-um a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    display: block; 
+    padding: 8px 12px;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.section-um a:hover {
+    color: var(--Cor-verde);
+    transform: translateY(-2px); 
+}
+
+
+.section-um li:first-child a {
+    background-color: var(--Cor-verde);
+    border-radius: 5px;
+    color: #000; 
+    transition: filter 0.3s;
+}
+
+.section-um  li:first-child a:hover {
+    filter: brightness(1.2);
+    color: #000; 
+}

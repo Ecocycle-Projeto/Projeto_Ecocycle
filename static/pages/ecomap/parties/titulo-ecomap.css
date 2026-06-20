@@ -1,0 +1,14 @@
+.titulo-ecomap {
+    display: block;
+    width: fit-content;
+    text-align: left;
+
+    margin-left: 10%; 
+    
+
+    font-size: clamp(2rem, 5vw, 3rem); 
+    background: linear-gradient(to right, #20AC43, #2BA84A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+}

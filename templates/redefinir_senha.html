@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/scripts/redefinir_senha.js" defer></script>
+    <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
+    <link rel="stylesheet" href="../static/pages/recuperar-senha/recuperar_senha.css">
+    <title>Redefinir Senha - Eco Cycle</title>
+</head>
+<body>
+    <form class="formulario-login" action="" id="form-redefinir">
+    <img class="imagem-login" src="../static/imagens/recycle-icon-93a07e 1.png" alt="Eco Cycle Logo">
+    
+    <h1 class="texto-formulario">Criar Nova Senha</h1>
+    <p class="texto-formulario">Digite sua nova senha abaixo para atualizar seu acesso.</p>
+
+    <div class="grupo-input">
+        <label for="new-password">Nova senha</label>
+        <input id="new-password" class="input-formulario" placeholder="*************" type="password" required minlength="6">
+    </div>
+
+    <div class="grupo-input">
+        <label for="confirm-password">Confirme a nova senha</label>
+        <input id="confirm-password" class="input-formulario" placeholder="*************" type="password" required minlength="6">
+    </div>
+
+    <label class="checkbox-formulario">
+        <input type="checkbox" id="mostrar-senha" onclick="
+            var senha = document.getElementById('new-password');
+            var confirma = document.getElementById('confirm-password');
+            if(this.checked) {
+                senha.type = 'text';
+                confirma.type = 'text';
+            } else {
+                senha.type = 'password';
+                confirma.type = 'password';
+            }
+        ">
+        <span>Mostrar senhas</span>
+    </label>
+
+    <button type="submit" class="botao-login">Salvar nova senha</button>
+    
+    <a class="link-formulario" href="./login.html">Voltar para o login</a>
+</form>
+</body>
+</html>

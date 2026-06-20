@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../static/pages/perfil_usuario/perfil_usuario.css">
+    <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
+</head>
+<body>
+    <header class="header-ecomap">
+        <img class="img-header-ecomap" src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="">
+    </header>
+    <menu class="menu-ecomap">
+        <ul>
+            <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
+            <li><a href="#">SERVIÇOS</a></li>
+            <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+            <li><a href="#">CONTATO</a></li>
+            <li><a href="#">PERFIL</a></li>
+
+            <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+                <ul class="dropdown-admin" id="dropdownAdmin">
+                    <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+                </ul>
+            </li>
+        </ul>
+    </menu>
+    <main class="caixa-pai">
+        <<main class="caixa-pai">
+        <div class="foto-usuario">
+            <img src="../static/imagens/icons8-usuário-100.png" alt="">
+        </div>
+        <div class="editar">
+            <p>EDITAR</p>
+        </div>
+        <div class="formulario-usuario">
+            <form class="formulario" action="">
+                <label for="nome"> NOME
+                <input id="nome" type="text">
+                </label>
+                <label for="email"> EMAIL
+                <input id="email" type="text">
+                </label>
+            </form>
+        </div>
+        <div class="botoes-formulario">
+            <button id="alterar" class="botao">Alterar senha</button>
+            <button id="verificacao" class="botao">Ativar verificação por duas etapas</button>  
+        </div>
+
+        <div class="excluir">
+            <a href="">Excluir conta</a>
+        </div>
+    </main>
+</body>
+</html>

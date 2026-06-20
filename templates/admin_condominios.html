@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoMap — Administração de Condomínios</title>
+  
+  <link rel="stylesheet" href="../static/pages/admin_condominios/admin_condominios.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  
+  <script src="../static/scripts/auth-guard.js"></script>
+  <script src="../static/scripts/admin_condominios.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <img src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="Banner EcoCycle">
+  </header>
+
+  <menu class="menu-ponto">
+    <ul>
+      <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
+      <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+      <li><a href="#">PERFIL</a></li>
+
+      <li class="menu-admin" id="menuAdmin" style="display:none;">
+        <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+        <ul class="dropdown-admin" id="dropdownAdmin">
+          <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+          <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+        </ul>
+      </li>
+    </ul>
+  </menu>
+
+  <section class="pai-tabela">
+
+    <div class="menu-tabela">
+      <button id="btnAdicionar">+ Adicionar</button>
+      <button id="btnEditar" disabled>✏ Editar</button>
+      <div class="busca">
+        <input type="text" id="campoBusca" placeholder="Buscar por nome, responsável...">
+      </div>
+      <button id="btnExcluir" disabled>🗑 Excluir Selecionados</button>
+    </div>
+
+    <div class="tabela">
+      <table id="tabelaCondominios">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="checkAll"></th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Responsável</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaCorpo">
+          {% for condominio in condominios %}
+          <tr data-id="{{ condominio.id }}">
+            <td><input type="checkbox" class="row-check"></td>
+            <td>{{ condominio.nome }}</td>
+            <td>{{ condominio.cnpj or '—' }}</td>
+            <td>{{ condominio.responsavel }}</td>
+            <td>{{ condominio.telefone or '—' }}</td>
+            <td>{{ condominio.endereco or (condominio.ponto_coleta.endereco if condominio.ponto_coleta else '—') }}</td>
+            <td>
+              <button class="btn-excluir-linha" data-id="{{ condominio.id }}" title="Excluir">🗑</button>
+            </td>
+          </tr>
+          {% else %}
+          <tr id="emptyRow">
+            <td colspan="7" style="text-align: center;">Nenhum condomínio cadastrado ainda.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <div id="modalOverlay" style="display: none;">
+    <div id="modal">
+
+      <div class="modal-header">
+        <h2 id="modalTitulo">Novo Condomínio</h2>
+        <button id="modalFechar">✕</button>
+      </div>
+
+      <form id="formCondominio">
+        <input type="hidden" id="condominioId" name="id">
+        <input type="hidden" id="inputLat" name="latitude">
+        <input type="hidden" id="inputLng" name="longitude">
+
+        <label for="inputNome">Nome *</label>
+        <input type="text" id="inputNome" name="nome"
+               placeholder="Ex: Condomínio Verde Vida" required>
+
+        <label for="inputCnpj">CNPJ</label>
+        <input type="text" id="inputCnpj" name="cnpj"
+               placeholder="00.000.000/0001-00">
+
+        <label for="inputResponsavel">Responsável *</label>
+        <input type="text" id="inputResponsavel" name="responsavel"
+               placeholder="Nome do síndico ou responsável" required>
+
+        <label for="inputTelefone">Telefone</label>
+        <input type="text" id="inputTelefone" name="telefone"
+               placeholder="(81) 99999-0000">
+
+        <label for="inputHorario">Horário de Funcionamento</label>
+        <input type="text" id="inputHorario" name="horario_funcionamento"
+               placeholder="Ex: Seg–Sex 07h–19h">
+
+        <label for="inputDescricao">Descrição</label>
+        <textarea id="inputDescricao" name="descricao" rows="3"
+                  placeholder="Informações sobre o ponto de coleta do condomínio..."></textarea>
+
+        <label for="inputEndereco">Endereço *</label>
+        <div class="endereco-grupo">
+          <input type="text" id="inputEndereco" name="endereco"
+                 placeholder="Rua, número, bairro, cidade" required>
+          <button type="button" id="btnLocalizar">🔍 Localizar</button>
+        </div>
+
+        <div id="miniMapaContainer" style="display: none;">
+          <div id="miniMapa"></div>
+          <div class="coordenadas-display">
+            <span>Lat: <b id="display-lat">-</b></span> |
+            <span>Lng: <b id="display-lng">-</b></span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelarModal">Cancelar</button>
+          <button type="submit" id="btnSalvarModal">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+.caixa-cards {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 30px;
+    padding: 20px;
+    justify-content: flex-start !important;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+/* Esconde a barra de rolagem horizontal feia em todos os navegadores */
+.caixa-cards::-webkit-scrollbar {
+    display: none !important;
+}
+
+.card {
+    background: #161818; 
+    border: 1px solid #2d2f2f;
+    border-radius: 20px;
+    padding: 15px;
+    
+    /* Trava o tamanho perfeito do card no carrossel horizontal */
+    flex: 0 0 320px !important;
+    width: 320px !important;
+    max-width: 320px !important;
+    min-height: 500px; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; 
+    scroll-snap-align: start !important;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #2BA84A;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* 2. Imagem Principal */
+.imagem-card {
+    width: 100%;
+    height: 180px; /* Reduzido levemente para equilibrar o conteúdo interno */
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: #000;
+}
+
+/* 3. Ícones Flutuantes (Posicionados sobre a Imagem) */
+.icone-agenda, .estrela, .icone-mapa {
+    position: absolute;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 25px; /* Alinhados no topo da imagem */
+    transition: 0.3s;
+}
+
+/* Agenda na esquerda, Estrela na direita */
+.icone-agenda { left: 25px; }
+.estrela { right: 25px; }
+
+/* O ícone de mapa pode ficar centralizado ou ao lado da estrela */
+.icone-mapa { 
+    right: 65px; 
+    border-radius: 20px; 
+    width: auto; 
+    padding: 0 8px;
+}
+
+.icone-agenda img, .estrela img, .icone-mapa img {
+    width: 18px;
+    height: 18px;
+}
+
+/* 4. Tipografia e Conteúdo */
+.titulo-servico {
+    color: #2BA84A;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.descricao-servico {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Faz o texto preencher o espaço vertical */
+}
+
+/* 5. Status, Distância e Impacto (Estilo Badges) */
+.status, .distancia, .impacto {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
+    width: fit-content;
+    font-weight: 600;
+}
+
+.status { background: rgba(43, 168, 74, 0.1); color: #2BA84A; }
+.distancia { background: #2d2f2f; color: #fff; }
+.impacto { background: rgba(66, 133, 244, 0.1); color: #4285f4; }
+
+/* 6. Botão de Ação no Rodapé */
+.botao-card {
+    background: #2BA84A;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.botao-card:hover {
+    background: #248a3d;
+}

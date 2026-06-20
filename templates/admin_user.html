@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMap — Administração de Usuários</title>
+    <link rel="stylesheet" href="../static/pages/admin_user/admin_user.css">
+    <script src="../static/scripts/auth-guard.js" defer></script>  
+    <script src="../static/scripts/admin_user.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <img src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="Banner EcoCycle">
+    </header>
+
+    <menu class="menu-ponto">
+        <ul>
+            <li><a class="home" href="http://127.0.0.1:5000/">HOME</a></li>
+           <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+            <li><a href="#">PERFIL</a></li>
+
+            <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+                <ul class="dropdown-admin" id="dropdownAdmin">
+                    <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                    <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+                </ul>
+            </li>
+        </ul>
+    </menu>
+
+    <section class="pai-tabela-admin">
+
+        <div class="menu-tabela-admin">
+            <button id="btnAdicionarUsuario">+ Adicionar</button>
+            <button id="btnEditarUsuario" disabled>✏ Editar</button>
+            <div class="busca-admin">
+                <input type="text" id="campoBusca" placeholder="Buscar por nome, e-mail...">
+            </div>
+            <button id="btnExcluirUsuario" disabled>🗑 Excluir Selecionados</button>
+        </div>
+
+        <div class="tabela-admin">
+            <table id="tabelaUsuarios">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="checkAll"></th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                    <tr id="emptyRow">
+                        <td colspan="4" style="text-align: center;">Nenhum usuário cadastrado ainda.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <div id="modalOverlayAdmin">
+        <div id="modalAdmin">
+
+            <div class="modal-admin-header">
+                <h2 id="modalAdminTitulo">Novo Usuário</h2>
+                <button id="modalAdminFechar">✕</button>
+            </div>
+
+            <form id="formUsuario">
+                <input type="hidden" id="usuarioId">
+
+                <label for="inputNome">Nome *</label>
+                <input type="text" id="inputNome" placeholder="Nome completo" required>
+
+                <label for="inputEmail">E-mail *</label>
+                <input type="email" id="inputEmail" placeholder="email@exemplo.com" required>
+
+                <label for="inputSenha">Senha *</label>
+                <input type="password" id="inputSenha" placeholder="Senha">
+
+                <div class="modal-admin-footer">
+                    <button type="button" id="btnCancelarAdmin">Cancelar</button>
+                    <button type="submit" id="btnSalvarAdmin">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/pages/ecomap/ecomap.css">
+    <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+    <title>|-Ecomap</title>
+</head>
+
+<!-- ═══ WIDGET CHATBOT ECOMAP ═══ -->
+<link rel="stylesheet" href="../static/pages/chatbot/chatbot.css">
+
+<button id="chatbotBotaoAbrir" title="Assistente EcoMap">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37
+                 C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z
+                 M8 11h8v2H8zm0-3h8v2H8z"/>
+    </svg>
+    <span class="icone-fechar">✕</span>
+</button>
+
+<div id="chatbotJanela">
+    <div class="chatbot-header">
+        <div class="chatbot-icone-bot">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37
+                         C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z
+                         M8 11h8v2H8zm0-3h8v2H8z"/>
+            </svg>
+        </div>
+        <div>
+            <strong>Assistente EcoMap</strong>
+            <span>Reciclagem e dúvidas da plataforma</span>
+        </div>
+    </div>
+
+    <div class="chatbot-corpo" id="chatbotCorpo"></div>
+
+    <form class="chatbot-footer" id="chatbotForm">
+        <input type="text" id="chatbotInput" placeholder="Digite sua pergunta..." autocomplete="off">
+        <button type="submit" title="Enviar">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+            </svg>
+        </button>
+    </form>
+</div>
+
+<script src="../static/scripts/chatbot.js"></script>
+
+<body>
+    <header class="header-ecomap">
+        <img class="img-header-ecomap" src="../static/imagens/Banner_EcoCycle-removebg-preview 1.png" alt="">
+    </header>
+   <menu class="menu-ecomap">
+    <ul>
+        <li><a class="btn-home-destaque" href="http://127.0.0.1:5000/">HOME</a></li>
+        <li><a href="http://127.0.0.1:5000/ecomap.html">ECOMAP</a></li>
+
+     <li class="menu-parceiro" id="menuParceiro">
+        <a href="#" id="btnMenuParceiro">QUER SER PARCEIRO? ▾</a>
+        <ul class="dropdown-parceiro" id="dropdownParceiro">
+            <li><a href="#" onclick="ativarModoCadastroEmpresa()">🏭 Cadastre sua Empresa</a></li>
+            <li><a href="#" onclick="ativarModoCadastroCondominio()">🏢 Cadastre seu Condomínio</a></li>
+            <li><a href="#" onclick="prepararFormularioServico()">🛠️ Cadastrar Novo Serviço</a></li>
+        </ul>
+    </li>
+
+        <li class="menu-parceiro" id="menuPerfil">
+            <a href="#" id="btnMenuPerfil">PERFIL ▾</a>
+            <ul class="dropdown-parceiro" id="dropdownPerfil">
+                <li><a href="#" id="btn-logout-dropdown">🚪 Sair / Logout</a></li>
+            </ul>
+        </li>
+
+        <li class="menu-admin" id="menuAdmin" style="display:none;">
+            <a href="#" id="btnMenuAdmin">⚙ ADMIN ▾</a>
+            <ul class="dropdown-admin" id="dropdownAdmin">
+                <li><a href="http://127.0.0.1:5000/admin_pontos.html">Gerenciar Pontos</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_user.html">Gerenciar Usuários</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_empresa.html">Gerenciar Empresas</a></li>
+                <li><a href="http://127.0.0.1:5000/admin_condominios.html">Gerenciar Condomínios</a></li>
+            </ul>
+        </li>
+    </ul>
+</menu>
+    <h1 class="titulo-ecomap">ECOMAP</h1>
+    <section class="mapa">
+        <input id="pesquisa" class="input-ecomap" type="text" placeholder="Buscar ponto de coleta...">
+        <img class="i-ecomap-pesquisa" src="../static/imagens/icons8-pesquisar-50 1.png" alt="">
+        <div id="map" style="flex-grow: 1; height: 100%; border-radius: 12px; z-index: 1;"></div>
+        <aside class="pai-botoes-mapa">
+            <button id="btn-zoom-in" class="botao-ecomap">+</button>
+            <button id="btn-zoom-out" class="botao-ecomap">-</button>
+            <button id="localizacao" class="botao-ecomap"><img class="icone-botao" src="../static/imagens/lcone-localizar1.png" alt=""></button>
+            <button class="botao-ecomap-legenda"><img class="icone-botao" src="../static/imagens/icons8-sinal-de-reciclagem-50.png" alt=""></button>
+        </aside>
+    </section>
+    <section class="servico-em-destaque">
+    <div class="pai-cards">
+        <h1>Serviços em Destaque</h1>
+    </div>
+    <div class="caixa-cards">
+        <div class="card">
+            <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
+            <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
+            <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
+            <img class="imagem-card" src="" alt="">
+            <h2 class="titulo-servico"></h2>
+            <p class="descricao-servico"></p>
+            <p class="status"></p>
+            <p class="distancia"></p>
+            <p class="impacto"></p>
+            <button class="botao-card"></button>
+        </div>
+    </div>
+</section>
+
+<section class="servico-favoritados">
+    <div class="pai-cards">
+        <h1>Serviços Favoritados</h1>
+    </div>
+    <div class="caixa-cards">
+        <div class="card">
+            <div class="icone-agenda"><img src="../static/imagens/calendario.png" alt=""></div>
+            <div class="icone-mapa"><img src="../static/imagens/lcone-localizar1.png" alt=""><button></button></div>
+            <div class="estrela"><img src="../static/imagens/estrela-vazia.png" alt=""></div>
+            <img class="imagem-card" src="" alt="">
+            <h2 class="titulo-servico"></h2>
+            <p class="descricao-servico"></p>
+            <p class="status"></p>
+            <p class="distancia"></p>
+            <p class="impacto"></p>
+            <button class="botao-card"></button>
+        </div>
+    </div>
+</section>
+    
+    <div id="modal-cadastro" class="modal-container">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <h2>Novo Ponto de Coleta</h2>
+        <hr>
+        
+        <div class="form-group">
+            <label>Nome do Local</label>
+            <input type="text" id="cad-nome" placeholder="Ex: Ecoponto Central">
+        </div>
+
+        <div class="form-group">
+            <label>Endereço</label>
+            <input type="text" id="cad-endereco" placeholder="Rua, número, bairro...">
+        </div>
+
+        <div class="form-group">
+            <label>Horário de Funcionamento</label>
+            <input type="text" id="cad-horario" placeholder="Seg a Sex: 08h - 18h">
+        </div>
+
+        <div class="form-group">
+            <label>Descrição / Materiais</label>
+            <textarea id="cad-descricao" maxlength="300" placeholder="O que pode ser descartado aqui?"></textarea>
+        </div>
+
+        <div class="coordenadas-display">
+            <span>Lat: <b id="display-lat"></b></span>
+            <span>Lng: <b id="display-lng"></b></span>
+        </div>
+
+        <button class="botao-salvar" onclick="salvarPontoNoServidor()">Cadastrar Ponto</button>
+    </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="../static/scripts/auth-guard.js"></script>
+    <script src="../static/scripts/ecomap.js"></script>
+</body>
+</html>

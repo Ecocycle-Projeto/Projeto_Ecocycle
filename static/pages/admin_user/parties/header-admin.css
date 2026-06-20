@@ -1,0 +1,22 @@
+@import '../../../css/global/variables.css';
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--Cor-fundo);
+    width: 70vw;
+    min-height: 10vh;
+
+    margin: 0 auto 10px auto;
+    padding: 0 2rem;
+
+    border-bottom: 5px solid var(--Cor-verde);
+    box-sizing: border-box;
+}
+
+header img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+}

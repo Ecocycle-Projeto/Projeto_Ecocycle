@@ -1,0 +1,24 @@
+.checkbox-formulario {
+    display: flex;
+    align-items: center;
+    width: 400px; 
+    max-width: 100%;
+    margin-bottom: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.checkbox-formulario input {
+   
+    width: 18px !important; 
+
+    height: 18px !important;
+
+    margin-right: 10px;
+    
+    flex-shrink: 0; 
+    
+    accent-color: var(--Cor-verde); 
+    
+    cursor: pointer;
+}

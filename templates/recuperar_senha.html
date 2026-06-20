@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/scripts/recuperar_senha.js"></script>
+    <link rel="website icon" href="../static/imagens/icons8-reciclagem-50 1.png">
+    <link rel="stylesheet" href="../static/pages/recuperar-senha/recuperar_senha.css">
+    <title>Recuperar Senha - Eco Cycle</title>
+</head>
+<body>
+    <form class="formulario-login" action="">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+    
+    <img class="imagem-login" src="../static/imagens/recycle-icon-93a07e 1.png" alt="Eco Cycle Logo">
+    
+    <h1 class="texto-formulario">Recuperar Senha</h1>
+    <p class="texto-formulario">Informe seu email e enviaremos um link para você redefinir sua senha.</p>
+
+    <div class="grupo-input">
+        <label for="recovery-email">Endereço de Email</label>
+        <input id="recovery-email" class="input-formulario" placeholder="joãopaulo55@gmail.com" type="email" required>
+    </div>
+
+    <div class="captcha-container">
+        <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_SITE_KEY'] }}"></div>
+    </div>
+
+    <button type="submit" class="botao-login">Enviar link de recuperação</button>
+    
+    <a class="link-formulario" href="./login.html">Lembrou da senha? Voltar para o login</a>
+    <a class="link-formulario" href="./cadastro.html">Não tem conta? Se registre agora!</a>
+</form>
+</body>
+</html>

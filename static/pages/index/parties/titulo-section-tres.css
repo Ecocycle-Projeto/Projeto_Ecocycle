@@ -1,0 +1,7 @@
+#titulo-section-tres {
+    color: white;
+    border-bottom: 2px solid green;
+    position: relative;
+    top: 60px;
+    z-index: 1;
+}

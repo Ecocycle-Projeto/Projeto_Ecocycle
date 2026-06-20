@@ -1,0 +1,71 @@
+.pai-tabela-admin {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.tabela-admin {
+    border: 1px solid #2BA84A;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.tabela-admin table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0d110d;
+}
+
+.tabela-admin thead tr {
+    background-color: #2BA84A;
+}
+
+.tabela-admin thead th {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0d110d;
+    text-align: left;
+}
+
+.tabela-admin tbody tr {
+    border-bottom: 1px solid #1a3a1a;
+    transition: background 0.15s;
+}
+
+.tabela-admin tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tabela-admin tbody tr:hover {
+    background-color: #111f11;
+}
+
+.tabela-admin tbody td {
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #d4e8d4;
+}
+
+.tabela-admin tbody td:last-child {
+    width: 36px;
+    text-align: center;
+}
+
+.btn-excluir-linha-admin {
+    background-color: #2BA84A;
+    border: none;
+    border-radius: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-excluir-linha-admin:hover {
+    background-color: #cc4444;
+}

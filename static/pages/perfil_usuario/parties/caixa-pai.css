@@ -1,0 +1,9 @@
+.caixa-pai {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Altera de 100% para 100vh */
+    justify-content: center;
+    align-items: center;
+}

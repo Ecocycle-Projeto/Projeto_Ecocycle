@@ -1,0 +1,5 @@
+.texto-formulario {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}

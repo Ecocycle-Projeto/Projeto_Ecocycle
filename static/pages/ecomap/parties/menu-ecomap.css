@@ -1,0 +1,198 @@
+.menu-ecomap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0; 
+}
+
+
+.menu-ecomap ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 30px; 
+}
+
+.menu-ecomap a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    display: block; 
+    padding: 8px 12px;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.menu-ecomap a:hover {
+    color: var(--Cor-verde);
+    transform: translateY(-2px); 
+}
+
+.menu-ecomap li.btn-home-destaque a {
+    background-color: var(--Cor-verde) !important;
+    border-radius: 5px !important;
+    color: #000 !important; 
+    transition: filter 0.3s;
+}
+
+.menu-ecomap li.btn-home-destaque a:hover {
+    filter: brightness(1.2) !important;
+    color: #000 !important; 
+}
+
+
+/* Menu Admin */
+
+.menu-admin {
+    position: relative;
+}
+
+.menu-admin > a {
+    color: #2BA84A;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dropdown-admin {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #161818;
+    border: 1px solid #2BA84A;
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.dropdown-admin li {
+    list-style: none;
+}
+
+.dropdown-admin li a {
+    display: block;
+    padding: 10px 16px;
+    color: #d4e8d4;
+    font-size: 13px;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-admin li a:hover {
+    background-color: #2BA84A;
+    color: #0d110d;
+}
+
+/* Abre o dropdown no hover */
+.menu-admin:hover .dropdown-admin {
+    display: block !important;
+}
+
+
+.menu-parceiro {
+    position: relative;
+}
+
+/* O botão principal na Navbar */
+.menu-parceiro > a {
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease !important; 
+}
+
+/* Efeito ao passar o mouse no botão principal */
+.menu-parceiro:hover > a {
+    color: var(--Cor-verde) !important;
+    transform: translateY(-2px) !important; 
+}
+
+/* Container do dropdown (Escondido por padrão) */
+.dropdown-parceiro {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #161818; /* Fundo escuro igual ao admin */
+    border: 1px solid #3B4444;
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.dropdown-parceiro li {
+    list-style: none;
+}
+
+/* Estado Normal: Copia exata do Admin, mas com o reset do background */
+.menu-ecomap ul .dropdown-parceiro li a {
+    display: block;
+    padding: 10px 16px;
+    color: #d4e8d4;            /* Cor do texto do admin */
+    font-size: 13px;
+    transition: background 0.2s;
+    white-space: nowrap;
+    background-color: transparent !important; /* 🔥 O SEGREDO: Força a ficar escuro por padrão e ignora o HOME */
+}
+
+/* 🔥 O HOVER QUE VOCÊ QUER: Igualzinho ao Admin */
+.menu-ecomap ul .dropdown-parceiro li a:hover {
+    background-color: #2BA84A !important; /* Só fica verde ao passar o mouse em cima */
+    color: #0d110d !important;             /* Texto escuro igual ao admin */
+}
+
+/* Abre o dropdown no hover do pai */
+.menu-parceiro:hover .dropdown-parceiro {
+    display: block !important;
+}
+
+/* Container do Menu Perfil */
+.menu-perfil {
+    position: relative;
+    display: inline-block;
+}
+
+/* Esconde o dropdown por padrão */
+.dropdown-perfil {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #11161a;
+    border: 1px solid #1a232a;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+    z-index: 1000;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+/* Itens de dentro do dropdown */
+.dropdown-perfil li a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-align: left;
+}
+
+.dropdown-perfil li a:hover {
+    background-color: #1a232a;
+}
+
+/* Classe utilitária que o JS vai injetar para abrir o menu */
+.mostrar-dropdown {
+    display: block !important;
+}
+
+/* Quando passar o mouse por cima do link de logout, o fundo fica vermelho */
+.dropdown-parceiro li a#btn-logout-dropdown:hover {
+    background-color: #e74c3c !important;
+    color: #ffffff !important;
+}

@@ -1,0 +1,45 @@
+.formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o formulário horizontalmente na tela */
+    position: relative;
+    width: 100%;         /* Garante que ele tenha espaço para trabalhar */
+    margin-top: 20px;    /* Afasta um pouco da foto de perfil/título acima */
+    margin-bottom: 20px; /* Controla o espaço antes de começar os botões */
+}
+
+/* Estilizando a tag <form> interna para organizar as labels */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;           /* Cria um espaço perfeito entre o campo Nome e o campo Email */
+    width: 100%;
+    max-width: 300px;    /* Define uma largura máxima elegante para os campos */
+}
+
+/* Estilizando as Labels (NOME / EMAIL) */
+.formulario label {
+    display: flex;
+    flex-direction: column; /* Faz o input ficar EMBAIXO do texto da label */
+    gap: 5px;               /* Espaço entre o texto "NOME" e a caixinha de texto */
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Estilizando os Inputs (as caixinhas de texto) */
+.formulario input {
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;        /* Afasta o texto digitado das bordas laterais */
+    font-size: 14px;
+    outline: none;          /* Remove aquela borda preta padrão ao clicar */
+    transition: border-color 0.2s;
+}
+
+/* Efeito visual quando o usuário clica para digitar */
+.formulario input:focus {
+    border-color: #2ba84a;  /* Usa o mesmo verde dos seus botões na borda */
+}

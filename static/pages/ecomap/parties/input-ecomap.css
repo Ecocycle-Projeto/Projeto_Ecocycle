@@ -1,0 +1,35 @@
+.input-ecomap {
+   
+    display: block; 
+    height: 40px;
+    width: 100%; 
+    max-width: 420px; 
+    
+    margin: 15px 0 0 20px; 
+    padding: 0 15px 0 45px; 
+    
+    background-color: #2D3A3A;
+    color: #ffffff;
+    border: 2px solid transparent; 
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none; 
+    transition: all 0.3s ease;
+
+    position: absolute; 
+    top: 20px;         
+    left: 20px;        
+    z-index: 10;      
+}
+
+.input-ecomap:focus {
+    border-color: var(--Cor-verde);
+    background-color: #364545;
+    box-shadow: 0 0 8px rgba(43, 168, 74, 0.4);
+}
+
+/* Estilo do Texto */
+.input-ecomap::placeholder {
+    color: #999;
+    font-style: italic;
+}

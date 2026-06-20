@@ -1,0 +1,12 @@
+.section-tres {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    height: 790px;
+    position: relative;
+    top: 250px;
+    margin-bottom: 30px;
+}
