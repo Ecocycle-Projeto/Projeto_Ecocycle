@@ -89,7 +89,7 @@ def solicitar_recuperacao():
         # 4. Gera o token e envia a mensagem
         serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
         token = serializer.dumps(email, salt='recuperacao-de-senha')
-        link_recuperacao = f"http://localhost:5000/redefinir_senha.html?token={token}"
+        link_recuperacao = f"http://127.0.0.1:5000/redefinir_senha.html?token={token}"
 
         if enviar_email_recuperacao(email, link_recuperacao):
             return jsonify(mensagem="Se o e-mail estiver cadastrado, um link de recuperação foi enviado."), 200
@@ -97,6 +97,9 @@ def solicitar_recuperacao():
             return jsonify(mensagem="Erro interno ao tentar disparar o e-mail."), 500
 
     except Exception as e:
+        print("==== ERRO REAL DO BACK-END ====")
+        print(str(e))
+        print("===============================")
         return jsonify(erro="Erro interno no servidor", detalhe=str(e)), 500
 
 

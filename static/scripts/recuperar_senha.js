@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 grecaptcha.reset(); 
-                throw new Error(data.mensagem || 'Erro ao solicitar recuperação');
+                throw new Error(data.detalhe || data.mensagem || 'Erro ao solicitar recuperação');
             }
 
             // Exibe mensagem de sucesso

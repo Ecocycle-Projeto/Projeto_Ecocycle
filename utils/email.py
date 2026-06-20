@@ -1,40 +1,35 @@
+import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import current_app
 
-def enviar_email_recuperacao(destinatario, link_recuperacao):
-    # O ideal é puxar essas credenciais do seu arquivo .env / config
-    remetente = current_app.config.get('MAIL_USERNAME', 'seuemail@gmail.com')
-    senha = current_app.config.get('MAIL_PASSWORD', 'suasenha')
-    servidor = current_app.config.get('MAIL_SERVER', 'smtp.gmail.com')
-    porta = current_app.config.get('MAIL_PORT', 587)
+def enviar_email_recuperacao(destinatario_email, link_recuperacao):
+    # Puxa as credenciais diretamente do .env
+    remetente_email = os.getenv("MAIL_USERNAME")
+    senha_app = os.getenv("MAIL_PASSWORD")
+    servidor_smtp = os.getenv("MAIL_SERVER", "smtp.gmail.com")
+    porta = int(os.getenv("MAIL_PORT", 587))
 
+    # Monta a estrutura da mensagem
     msg = MIMEMultipart()
-    msg['From'] = remetente
-    msg['To'] = destinatario
-    msg['Subject'] = "Recuperação de Senha - Eco Cycle"
+    msg['From'] = remetente_email
+    msg['To'] = destinatario_email
+    msg['Subject'] = "Eco Cycle - Recuperação de Senha"
 
-    corpo_email = f"""
-    Olá!
-    
-    Você solicitou a recuperação de senha na plataforma Eco Cycle.
-    Clique no link abaixo para redefinir sua senha:
-    
-    {link_recuperacao}
-    
-    Este link é válido por 1 hora. Se você não solicitou essa recuperação, por favor ignore este e-mail.
-    """
-    
-    msg.attach(MIMEText(corpo_email, 'plain', 'utf-8'))
+    # Corpo do e-mail
+    corpo = f"Olá!\n\nVocê solicitou a recuperação de senha.\nClique no link abaixo para redefinir:\n{link_recuperacao}\n\nSe não foi você, ignore este e-mail."
+    msg.attach(MIMEText(corpo, 'plain'))
 
     try:
-        server = smtplib.SMTP(servidor, porta)
-        server.starttls() # Criptografa a conexão
-        server.login(remetente, senha)
-        server.sendmail(remetente, destinatario, msg.as_string())
+        # Conecta ao servidor do Google e faz o disparo
+        server = smtplib.SMTP(servidor_smtp, porta)
+        server.starttls() # Inicia a criptografia exigida pelo Gmail
+        server.login(remetente_email, senha_app)
+        server.send_message(msg)
         server.quit()
         return True
     except Exception as e:
-        print(f"Erro ao enviar email: {e}")
+        print("=== ERRO NO DISPARO DE E-MAIL ===")
+        print(str(e))
+        print("=================================")
         return False

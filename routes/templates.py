@@ -43,3 +43,11 @@ def admin_empresa():
 def admin_condominios():
     condominios = Condominio.query.all()
     return render_template("admin_condominios.html", condominios=condominios)
+
+@template.route('/recuperar_senha.html')
+def recuperar_senha_page():
+    return render_template('recuperar_senha.html') 
+
+@template.route('/redefinir_senha.html')
+def redefinir_senha_page():
+    return render_template('redefinir_senha.html')
